@@ -74,12 +74,13 @@
             width: 100%;
             height: 100%;
             border-radius: 50%;
-            background-color: #1f2937; /* Placeholder color */
+            background-color: #1f2937; /* Fallback color */
             display: flex;
             align-items: center;
             justify-content: center;
             color: #60a5fa;
             font-size: 4rem;
+            object-fit: cover; /* Ensure the image covers the circle */
         }
     </style>
 </head>
@@ -123,7 +124,7 @@
                         <a href="#expertise" class="btn-primary bg-blue-600 text-white font-bold py-3 px-6 rounded-lg">
                             View My Expertise
                         </a>
-                        <a href="https://github.com/votre_repo" target="_blank" class="bg-gray-700 text-white font-bold py-3 px-6 rounded-lg hover:bg-gray-600 transition-colors flex items-center space-x-2">
+                        <a href="https://github.com/Francis-Ntahimpera" target="_blank" class="bg-gray-700 text-white font-bold py-3 px-6 rounded-lg hover:bg-gray-600 transition-colors flex items-center space-x-2">
                            <span>My GitHub</span>
                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.168 6.839 9.492.5.092.682-.217.682-.482 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.031-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.338 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.001 10.001 0 0022 12c0-5.523-4.477-10-10-10z" clip-rule="evenodd"></path></svg>
                         </a>
@@ -141,10 +142,11 @@
                         <!-- Profile and Side Cards -->
                         <div class="md:col-span-2 flex flex-col items-center">
                             <div class="profile-pic-frame">
-                                <div class="profile-pic">
-                                    <!-- Placeholder for initials or actual image -->
-                                    FN
-                                </div>
+                                <img src="https://media.licdn.com/dms/image/v2/D4E03AQHWikrcFxhnnw/profile-displayphoto-crop_800_800/B4EZesD.eiHwAQ-/0/1750938416207?e=1761782400&v=beta&t=Z2RB2sYTdZl1N_sRFCaS0exZ4Pez062_e8NNEkfWrZo" 
+                                     alt="Francis Ntahimpera Profile Picture" 
+                                     class="profile-pic"
+                                     onerror="this.onerror=null; this.src='https://placehold.co/200x200/1f2937/60a5fa?text=FN';"
+                                />
                             </div>
                              <div class="glass-effect rounded-lg p-6 border border-gray-700 w-full mb-4">
                                 <h3 class="text-xl font-bold text-blue-400 mb-2">Human Skills</h3>
@@ -277,7 +279,7 @@
                             <div class="p-6 flex flex-col flex-grow">
                                 <h4 class="text-xl font-bold text-white mb-2">Secure AKS Deployment with Terraform</h4>
                                 <p class="text-gray-400 text-sm mb-4 flex-grow">Automated deployment of an Azure Kubernetes Service cluster configured with Azure Policy for enforcing security baselines (Zero-Trust).</p>
-                                <a href="https://github.com/votre_repo/aks-secure-iac" target="_blank" class="text-blue-400 hover:text-blue-300 flex items-center space-x-1">
+                                <a href="https://github.com/Francis-Ntahimpera/aks-secure-iac" target="_blank" class="text-blue-400 hover:text-blue-300 flex items-center space-x-1">
                                     <span>View on GitHub</span>
                                     <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.168 6.839 9.492.5.092.682-.217.682-.482 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.031-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.338 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.001 10.001 0 0022 12c0-5.523-4.477-10-10-10z" clip-rule="evenodd"></path></svg>
                                 </a>
@@ -291,7 +293,7 @@
                             <div class="p-6 flex flex-col flex-grow">
                                 <h4 class="text-xl font-bold text-white mb-2">GitLab CI/CD Pipeline Template</h4>
                                 <p class="text-gray-400 text-sm mb-4 flex-grow">Reusable GitLab CI/CD template for deploying web applications to Azure Web Apps, focusing on efficient stage management and artifact handling.</p>
-                                <a href="https://github.com/votre_repo/gitlab-ci-templates" target="_blank" class="text-blue-400 hover:text-blue-300 flex items-center space-x-1">
+                                <a href="https://github.com/Francis-Ntahimpera/gitlab-ci-templates" target="_blank" class="text-blue-400 hover:text-blue-300 flex items-center space-x-1">
                                     <span>View on GitHub</span>
                                     <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.168 6.839 9.492.5.092.682-.217.682-.482 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.031-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.338 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.001 10.001 0 0022 12c0-5.523-4.477-10-10-10z" clip-rule="evenodd"></path></svg>
                                 </a>
@@ -305,7 +307,7 @@
                             <div class="p-6 flex flex-col flex-grow">
                                 <h4 class="text-xl font-bold text-white mb-2">Security Monitoring Setup (PoC)</h4>
                                 <p class="text-gray-400 text-sm mb-4 flex-grow">Proof-of-Concept repository for setting up basic threat detection and alerting rules using Azure Monitor and Log Analytics for a VM environment.</p>
-                                <a href="https://github.com/votre_repo/azure-sec-monitor" target="_blank" class="text-blue-400 hover:text-blue-300 flex items-center space-x-1">
+                                <a href="https://github.com/Francis-Ntahimpera/azure-sec-monitor" target="_blank" class="text-blue-400 hover:text-blue-300 flex items-center space-x-1">
                                     <span>View on GitHub</span>
                                     <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.168 6.839 9.492.5.092.682-.217.682-.482 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.031-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.338 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.001 10.001 0 0022 12c0-5.523-4.477-10-10-10z" clip-rule="evenodd"></path></svg>
                                 </a>
