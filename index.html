@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="fr" class="scroll-smooth">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Francis Ntahimpera - Cloud Devops Engineer</title>
-    <!-- Chosen Palette: Nuit Cybernétique (Noir, Bleu Vibrant, Blanc) -->
-    <!-- Application Structure Plan: J'ai conçu une application d'une seule page avec une navigation fixe pour un accès facile et ergonomique aux sections clés : Accueil, À Propos, Compétences, Projets, et Contact. Cette structure permet un parcours utilisateur fluide et intuitif, où l'information est présentée de manière progressive. Le flux commence par une introduction visuelle forte (Accueil), suivie d'un contexte personnel (À Propos), de preuves de compétences (Compétences, Projets), et se termine par un appel à l'action clair (Contact). Cette architecture a été choisie pour sa simplicité et son efficacité à raconter une histoire professionnelle cohérente. -->
-    <!-- Visualization & Content Choices: L'animation en toile de fond dans la section d'accueil (Goal: Engager) utilise Canvas pour créer une ambiance technologique et moderne sans nuire aux performances. Les compétences (Goal: Informer) sont présentées dans une grille claire avec des icônes pour une identification rapide. Les projets (Goal: Démontrer) sont affichés sous forme de cartes interactives avec des filtres (Interaction: Filtrage par technologie), permettant aux recruteurs de trouver facilement les informations pertinentes. J'ai utilisé des icônes SVG en ligne pour les liens sociaux et GitHub car c'est la méthode standard et la plus accessible pour ce type d'icône, tout en respectant la contrainte de ne pas utiliser de graphiques SVG complexes pour les visualisations de données. -->
+    <title>Francis NTAHIMPERA - DevOps Cyber Enthusiast</title>
+    <!-- Chosen Palette: Cyber Night (Black, Vibrant Blue, White) -->
+    <!-- Application Structure Plan: Designed a single-page application with fixed navigation for ergonomic and easy access to key sections: Home, Profile, Expertise, Projects, and Contact. The Experience section was removed to focus purely on skills, personal projects, and profile summary. This structure ensures a smooth and intuitive user journey, presenting information progressively: a strong visual introduction (Home), personal context (Profile), evidence of capability (Expertise, Projects), leading to a clear call-to-action (Contact). This architecture was chosen for simplicity and effectiveness in telling a coherent professional story. -->
+    <!-- Visualization & Content Choices: The animated background in the Home section (Goal: Engage) uses Canvas for a modern, tech-focused atmosphere. Skills (Goal: Inform) are presented in a clear grid with icons. Projects (Goal: Showcase) are displayed as structured cards, linking each project to code. A dedicated photo frame was added to the profile section. I used inline SVG for social and certification logos for visual impact, adhering to the constraint against complex SVG data visualizations. -->
     <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -39,6 +39,48 @@
             color: #3b82f6;
             font-weight: 700;
         }
+        .skill-icon {
+            font-size: 3rem;
+            line-height: 1;
+        }
+        .skill-detail {
+            font-size: 0.8rem;
+            color: #9ca3af;
+        }
+        .cert-icon {
+            color: #3b82f6;
+        }
+        .project-thumbnail {
+            width: 100%;
+            height: 150px;
+            background-color: #1f2937;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: #60a5fa;
+            border-bottom: 2px solid #3b82f6;
+        }
+        .profile-pic-frame {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #3b82f6, #0d1117);
+            padding: 4px;
+            margin: 0 auto 1.5rem auto;
+            box-shadow: 0 0 25px rgba(59, 130, 246, 0.5);
+        }
+        .profile-pic {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background-color: #1f2937; /* Placeholder color */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #60a5fa;
+            font-size: 4rem;
+        }
     </style>
 </head>
 <body class="overflow-x-hidden">
@@ -48,11 +90,11 @@
     <div class="relative z-10">
         <header id="header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
             <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-                <a href="#accueil" class="text-2xl font-black text-white text-glow">JD.</a>
+                <a href="#home" class="text-2xl font-black text-white text-glow">FRANCIS.</a>
                 <div class="hidden md:flex items-center space-x-8">
-                    <a href="#apropos" class="nav-link text-gray-300 hover:text-blue-500 transition-colors">À Propos</a>
-                    <a href="#competences" class="nav-link text-gray-300 hover:text-blue-500 transition-colors">Compétences</a>
-                    <a href="#projets" class="nav-link text-gray-300 hover:text-blue-500 transition-colors">Projets</a>
+                    <a href="#profile" class="nav-link text-gray-300 hover:text-blue-500 transition-colors">Profile</a>
+                    <a href="#expertise" class="nav-link text-gray-300 hover:text-blue-500 transition-colors">Expertise</a>
+                    <a href="#projects" class="nav-link text-gray-300 hover:text-blue-500 transition-colors">Projects</a>
                     <a href="#contact" class="nav-link text-gray-300 hover:text-blue-500 transition-colors">Contact</a>
                 </div>
                 <button id="mobile-menu-button" class="md:hidden text-white">
@@ -60,172 +102,245 @@
                 </button>
             </nav>
             <div id="mobile-menu" class="hidden md:hidden bg-gray-900/80 backdrop-blur-sm">
-                <a href="#apropos" class="block text-center py-2 px-4 text-gray-300 hover:bg-blue-500 hover:text-white">À Propos</a>
-                <a href="#competences" class="block text-center py-2 px-4 text-gray-300 hover:bg-blue-500 hover:text-white">Compétences</a>
-                <a href="#projets" class="block text-center py-2 px-4 text-gray-300 hover:bg-blue-500 hover:text-white">Projets</a>
+                <a href="#profile" class="block text-center py-2 px-4 text-gray-300 hover:bg-blue-500 hover:text-white">Profile</a>
+                <a href="#expertise" class="block text-center py-2 px-4 text-gray-300 hover:bg-blue-500 hover:text-white">Expertise</a>
+                <a href="#projects" class="block text-center py-2 px-4 text-gray-300 hover:bg-blue-500 hover:text-white">Projects</a>
                 <a href="#contact" class="block text-center py-2 px-4 text-gray-300 hover:bg-blue-500 hover:text-white">Contact</a>
             </div>
         </header>
 
         <main>
-            <section id="accueil" class="min-h-screen flex items-center container mx-auto px-6">
+            <section id="home" class="min-h-screen flex items-center container mx-auto px-6">
                 <div class="max-w-3xl">
+                    <p class="text-xl md:text-2xl text-blue-400 font-medium mb-4">FRANCIS NTAHIMPERA</p>
                     <h1 class="text-5xl md:text-7xl font-black text-white leading-tight">
-                        <span class="text-glow">Cloud Devops Engineer</span><br>Passionné par la création d'expériences numériques.
+                        <span class="text-glow">DevOps Cyber Enthusiast</span><br>Reliable Architecture & Secure Automation.
                     </h1>
                     <p class="mt-6 text-lg text-gray-300 max-w-xl">
-                        Je suis Francis Ntahimpera, un Cloud Devops Engineer full-stack spécialisé dans la conception d'infrasctructure  modernes, intuitives et performantes.
+                        Expert in automation and **Infrastructure as Code (IaC)**, I design solutions that streamline deployments and ensure a high-performing, resilient technology ecosystem.
                     </p>
                     <div class="mt-8 flex gap-4">
-                        <a href="#projets" class="btn-primary bg-blue-600 text-white font-bold py-3 px-6 rounded-lg">
-                            My Projects
+                        <a href="#expertise" class="btn-primary bg-blue-600 text-white font-bold py-3 px-6 rounded-lg">
+                            View My Expertise
                         </a>
-                        <a href="#contact" class="bg-gray-700 text-white font-bold py-3 px-6 rounded-lg hover:bg-gray-600 transition-colors">
-                            Contact Me
+                        <a href="https://github.com/votre_repo" target="_blank" class="bg-gray-700 text-white font-bold py-3 px-6 rounded-lg hover:bg-gray-600 transition-colors flex items-center space-x-2">
+                           <span>My GitHub</span>
+                           <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.168 6.839 9.492.5.092.682-.217.682-.482 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.031-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.338 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.001 10.001 0 0022 12c0-5.523-4.477-10-10-10z" clip-rule="evenodd"></path></svg>
                         </a>
                     </div>
                 </div>
             </section>
 
-            <section id="apropos" class="py-20 md:py-32">
+            <section id="profile" class="py-20 md:py-32">
                 <div class="container mx-auto px-6">
                     <div class="text-center mb-12">
-                        <h2 class="text-4xl font-bold text-white">À Propos de Moi</h2>
+                        <h2 class="text-4xl font-bold text-white">Professional Profile</h2>
                         <div class="w-20 h-1 bg-blue-500 mx-auto mt-4"></div>
                     </div>
-                    <div class="grid md:grid-cols-5 gap-10 items-center">
-                        <div class="md:col-span-2">
-                           <div class="w-full aspect-square bg-gray-800 rounded-lg p-2 border border-gray-700">
-                                <div class="w-full h-full bg-gray-700 rounded-md flex items-center justify-center">
-                                    <p class="text-gray-500">Votre Photo Ici</p>
+                    <div class="grid md:grid-cols-5 gap-10 items-start">
+                        <!-- Profile and Side Cards -->
+                        <div class="md:col-span-2 flex flex-col items-center">
+                            <div class="profile-pic-frame">
+                                <div class="profile-pic">
+                                    <!-- Placeholder for initials or actual image -->
+                                    FN
                                 </div>
+                            </div>
+                             <div class="glass-effect rounded-lg p-6 border border-gray-700 w-full mb-4">
+                                <h3 class="text-xl font-bold text-blue-400 mb-2">Human Skills</h3>
+                                <p class="text-gray-300">Curiosity, Team Player, Communication, Problem Solving, Fast Learning/Adaptability, Delivering Client Value.</p>
+                            </div>
+                           <div class="glass-effect rounded-lg p-6 border border-gray-700 w-full">
+                                <h3 class="text-xl font-bold text-blue-400 mb-4">Certifications</h3>
+                                <ul class="list-none text-gray-300 space-y-3">
+                                    <li class="flex items-start">
+                                        <!-- AZURE DEVOPS ENGINEER ICON (Grey for In Progress) -->
+                                        <svg class="w-6 h-6 mr-3 mt-1 flex-shrink-0" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M12 2L3 5V11C3 16.55 6.84 21.74 12 23C17.16 21.74 21 16.55 21 11V5L12 2Z" fill="#A0AEC0"/>
+                                            <path d="M12 4.41L19 7.07V11C19 15.61 16.2 19.86 12 21.77C7.8 19.86 5 15.61 5 11V7.07L12 4.41ZM12 7.5L7 9.5V11.5L12 9.5L17 11.5V9.5L12 7.5Z" fill="#FFFFFF"/>
+                                            <path d="M9 13H7V15H9V13ZM11 13H13V15H11V13ZM15 13H17V15H15V13Z" fill="#A0AEC0"/>
+                                        </svg>
+                                        <div>
+                                            <span class="font-semibold">AZURE DEVOPS ENGINEER</span> (In Progress)
+                                            <p class="text-sm text-gray-500">AZ-400 equivalent</p>
+                                        </div>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <!-- AZURE ADMINISTRATOR ICON -->
+                                        <svg class="w-6 h-6 mr-3 mt-1 flex-shrink-0" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M12 2L3 5V11C3 16.55 6.84 21.74 12 23C17.16 21.74 21 16.55 21 11V5L12 2Z" fill="#1E90FF"/>
+                                            <path d="M12 4.41L19 7.07V11C19 15.61 16.2 19.86 12 21.77C7.8 19.86 5 15.61 5 11V7.07L12 4.41Z" fill="#FFFFFF"/>
+                                            <path d="M12 7L7 11H17L12 7ZM12 18L17 14H7L12 18Z" fill="#1E90FF"/>
+                                        </svg>
+                                        <div>
+                                            <span class="font-semibold">AZURE ADMINISTRATOR</span> (2025)
+                                            <p class="text-sm text-gray-500">AZ-104 equivalent</p>
+                                        </div>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <!-- CompTIA Security+ Icon -->
+                                        <svg class="w-6 h-6 mr-3 mt-1 flex-shrink-0" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <circle cx="12" cy="12" r="10" fill="#3b82f6"/>
+                                            <path d="M9 10C9 8.34315 10.3432 7 12 7C13.6569 7 15 8.34315 15 10C15 11.6569 13.6569 13 12 13C10.3432 13 9 11.6569 9 10Z" fill="#FFFFFF"/>
+                                            <path d="M12 10C12 9.44772 12.4477 9 13 9C13.5523 9 14 9.44772 14 10C14 10.5523 13.5523 11 13 11C12.4477 11 12 10.5523 12 10Z" fill="#3b82f6"/>
+                                            <path d="M10 17H14" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                            <path d="M12 15V17" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                            <path d="M8 12L16 12" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                        <span class="font-semibold">CompTIA Security+</span> (2024)
+                                    </li>
+                                    <li class="flex items-start">
+                                        <!-- AZURE FUNDAMENTALS ICON -->
+                                        <svg class="w-6 h-6 mr-3 mt-1 flex-shrink-0" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M12 2L3 5V11C3 16.55 6.84 21.74 12 23C17.16 21.74 21 16.55 21 11V5L12 2Z" fill="#1E90FF"/>
+                                            <path d="M12 4.41L19 7.07V11C19 15.61 16.2 19.86 12 21.77C7.8 19.86 5 15.61 5 11V7.07L12 4.41Z" fill="#FFFFFF"/>
+                                            <path d="M12 8L7 11V15L12 18L17 15V11L12 8Z" fill="#1E90FF"/>
+                                        </svg>
+                                        <span class="font-semibold">AZURE FUNDAMENTALS</span> (2023)
+                                    </li>
+                                </ul>
                             </div>
                         </div>
                         <div class="md:col-span-3">
-                            <h3 class="text-2xl font-bold text-blue-400 mb-4">Qui suis-je ?</h3>
+                            <h3 class="text-2xl font-bold text-blue-400 mb-4">My Value Proposition</h3>
                             <p class="text-gray-300 mb-4">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                                My expertise in **automation** and **Infrastructure as Code (IaC)** is dedicated to system efficiency. I manage CI/CD pipelines and use containerization to build reliable, scalable architectures. My objective is simple: streamline deployments so your teams can focus on innovation.
                             </p>
-                            <p class="text-gray-300">
-                                Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                            <p class="text-gray-300 mb-4">
+                                As a specialist in IT operations and **cybersecurity**, I resolve critical incidents (via Azure Sentinel/Monitor) and implement proactive strategies to protect assets. Through real-time monitoring (Azure), I anticipate issues and ensure rapid response.
                             </p>
+                             <p class="text-gray-300">
+                                I support the standardization of processes and technical documentation (runbooks), guaranteeing best practices for a resilient technology ecosystem.
+                            </p>
+                            <h3 class="text-2xl font-bold text-blue-400 mt-8 mb-4">Key Achievements</h3>
+                             <ul class="text-gray-300 space-y-2 list-disc list-inside ml-5">
+                                <li>Managed 80+ pipelines (Azure DevOps, GitLab), **cutting release time by 40%**.</li>
+                                <li>Enforced security policies, reducing non-compliance by **55%**.</li>
+                                <li>Deployed 150+ Azure resources using reusable **Terraform modules**.</li>
+                                <li>Used **Azure Sentinel/Monitor** for critical cyber incident management and automated threat triggers.</li>
+                                <li>Built monitoring dashboards, slashing mean-time-to-detect (MTTD) by **25%**.</li>
+                            </ul>
                         </div>
                     </div>
                 </div>
             </section>
             
-            <section id="competences" class="py-20 md:py-32 bg-gray-900/50">
+            <section id="expertise" class="py-20 md:py-32 bg-gray-900/50">
                 <div class="container mx-auto px-6">
                     <div class="text-center mb-12">
-                        <h2 class="text-4xl font-bold text-white">Mes Compétences</h2>
+                        <h2 class="text-4xl font-bold text-white">Technical Stack & Expertise</h2>
                         <div class="w-20 h-1 bg-blue-500 mx-auto mt-4"></div>
                     </div>
-                    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+                    <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8">
                         
                         <div class="glass-effect rounded-lg p-6 text-center hover:border-blue-500 transition-all transform hover:-translate-y-2">
-                            <p class="text-5xl mb-2">💻</p>
-                            <h3 class="font-bold text-white text-lg">Frontend</h3>
-                            <p class="text-gray-400 text-sm">HTML, CSS, JavaScript </p>
+                            <p class="skill-icon">☁️</p>
+                            <h3 class="font-bold text-white text-lg">Cloud</h3>
+                            <p class="skill-detail">Microsoft Azure</p>
+                        </div>
+                         <div class="glass-effect rounded-lg p-6 text-center hover:border-blue-500 transition-all transform hover:-translate-y-2">
+                            <p class="skill-icon">🏗️</p>
+                            <h3 class="font-bold text-white text-lg">IaC</h3>
+                            <p class="skill-detail">Terraform, Ansible, Kubernetes, Docker</p>
                         </div>
                         <div class="glass-effect rounded-lg p-6 text-center hover:border-blue-500 transition-all transform hover:-translate-y-2">
-                             <p class="text-5xl mb-2">⚙️</p>
-                            <h3 class="font-bold text-white text-lg">Backend</h3>
-                            <p class="text-gray-400 text-sm">Python PHP, Laravel</p>
+                            <p class="skill-icon">🚀</p>
+                            <h3 class="font-bold text-white text-lg">CI/CD</h3>
+                            <p class="skill-detail">Azure DevOps, GitLab, Jenkins</p>
                         </div>
                         <div class="glass-effect rounded-lg p-6 text-center hover:border-blue-500 transition-all transform hover:-translate-y-2">
-                            <p class="text-5xl mb-2">💾</p>
-                            <h3 class="font-bold text-white text-lg">Bases de données</h3>
-                            <p class="text-gray-400 text-sm"> MySQL, Firebase</p>
+                            <p class="skill-icon">🛡️</p>
+                            <h3 class="font-bold text-white text-lg">Security</h3>
+                            <p class="skill-detail">Cloud, Network, Application Security</p>
                         </div>
                         <div class="glass-effect rounded-lg p-6 text-center hover:border-blue-500 transition-all transform hover:-translate-y-2">
-                            <p class="text-5xl mb-2">🛠️</p>
-                            <h3 class="font-bold text-white text-lg">Outils & DevOps</h3>
-                            <p class="text-gray-400 text-sm">Git, Docker, Jenkins, AWS, Vercel</p>
+                            <p class="skill-icon">📊</p>
+                            <h3 class="font-bold text-white text-lg">Monitoring</h3>
+                            <p class="skill-detail">Azure Monitor / Sentinel, Dynatrace, Splunk</p>
                         </div>
-
                     </div>
                 </div>
             </section>
 
-            <section id="projets" class="py-20 md:py-32">
+             <section id="projects" class="py-20 md:py-32">
                 <div class="container mx-auto px-6">
                     <div class="text-center mb-12">
-                        <h2 class="text-4xl font-bold text-white">Mes Projets Récents</h2>
+                        <h2 class="text-4xl font-bold text-white">My Projects</h2>
                         <div class="w-20 h-1 bg-blue-500 mx-auto mt-4"></div>
+                        <p class="mt-4 text-gray-400">Personal repositories and proof-of-concept for Cloud, IaC, and security automation.</p>
                     </div>
                     
-                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        <div class="glass-effect rounded-lg overflow-hidden group">
-                            <div class="p-6">
-                                <h3 class="text-xl font-bold text-white mb-2">Nom du Projet 1</h3>
-                                <p class="text-gray-400 mb-4 text-sm">Une brève description du projet, de ses objectifs et des défis rencontrés.</p>
-                                <div class="flex flex-wrap gap-2 mb-4">
-                                    <span class="bg-blue-900/50 text-blue-300 text-xs font-semibold px-2.5 py-1 rounded-full">React</span>
-                                    <span class="bg-blue-900/50 text-blue-300 text-xs font-semibold px-2.5 py-1 rounded-full">Node.js</span>
-                                    <span class="bg-blue-900/50 text-blue-300 text-xs font-semibold px-2.5 py-1 rounded-full">MongoDB</span>
-                                </div>
-                                <div class="flex items-center space-x-4">
-                                    <a href="#" target="_blank" class="text-gray-400 hover:text-blue-500 transition-colors">
-                                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.168 6.839 9.492.5.092.682-.217.682-.482 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.031-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.338 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.001 10.001 0 0022 12c0-5.523-4.477-10-10-10z" clip-rule="evenodd"></path></svg>
-                                    </a>
-                                </div>
+                    <div class="grid md:grid-cols-3 gap-8">
+                        
+                        <div class="glass-effect rounded-lg overflow-hidden flex flex-col">
+                            <div class="project-thumbnail">
+                                <span>&#128187;</span>
+                            </div>
+                            <div class="p-6 flex flex-col flex-grow">
+                                <h4 class="text-xl font-bold text-white mb-2">Secure AKS Deployment with Terraform</h4>
+                                <p class="text-gray-400 text-sm mb-4 flex-grow">Automated deployment of an Azure Kubernetes Service cluster configured with Azure Policy for enforcing security baselines (Zero-Trust).</p>
+                                <a href="https://github.com/votre_repo/aks-secure-iac" target="_blank" class="text-blue-400 hover:text-blue-300 flex items-center space-x-1">
+                                    <span>View on GitHub</span>
+                                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.168 6.839 9.492.5.092.682-.217.682-.482 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.031-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.338 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.001 10.001 0 0022 12c0-5.523-4.477-10-10-10z" clip-rule="evenodd"></path></svg>
+                                </a>
                             </div>
                         </div>
 
-                        <div class="glass-effect rounded-lg overflow-hidden group">
-                           <div class="p-6">
-                                <h3 class="text-xl font-bold text-white mb-2">Nom du Projet 2</h3>
-                                <p class="text-gray-400 mb-4 text-sm">Une brève description du projet, de ses objectifs et des défis rencontrés.</p>
-                                <div class="flex flex-wrap gap-2 mb-4">
-                                    <span class="bg-blue-900/50 text-blue-300 text-xs font-semibold px-2.5 py-1 rounded-full">Vue.js</span>
-                                    <span class="bg-blue-900/50 text-blue-300 text-xs font-semibold px-2.5 py-1 rounded-full">Firebase</span>
-                                    <span class="bg-blue-900/50 text-blue-300 text-xs font-semibold px-2.5 py-1 rounded-full">Tailwind CSS</span>
-                                </div>
-                                <div class="flex items-center space-x-4">
-                                    <a href="#" target="_blank" class="text-gray-400 hover:text-blue-500 transition-colors">
-                                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.168 6.839 9.492.5.092.682-.217.682-.482 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.031-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.338 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.001 10.001 0 0022 12c0-5.523-4.477-10-10-10z" clip-rule="evenodd"></path></svg>
-                                    </a>
-                                </div>
+                        <div class="glass-effect rounded-lg overflow-hidden flex flex-col">
+                            <div class="project-thumbnail">
+                                <span>&#128640;</span>
+                            </div>
+                            <div class="p-6 flex flex-col flex-grow">
+                                <h4 class="text-xl font-bold text-white mb-2">GitLab CI/CD Pipeline Template</h4>
+                                <p class="text-gray-400 text-sm mb-4 flex-grow">Reusable GitLab CI/CD template for deploying web applications to Azure Web Apps, focusing on efficient stage management and artifact handling.</p>
+                                <a href="https://github.com/votre_repo/gitlab-ci-templates" target="_blank" class="text-blue-400 hover:text-blue-300 flex items-center space-x-1">
+                                    <span>View on GitHub</span>
+                                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.168 6.839 9.492.5.092.682-.217.682-.482 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.031-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.338 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.001 10.001 0 0022 12c0-5.523-4.477-10-10-10z" clip-rule="evenodd"></path></svg>
+                                </a>
                             </div>
                         </div>
-                        
-                         <div class="glass-effect rounded-lg overflow-hidden group">
-                            <div class="p-6">
-                                <h3 class="text-xl font-bold text-white mb-2">Nom du Projet 3</h3>
-                                <p class="text-gray-400 mb-4 text-sm">Une brève description du projet, de ses objectifs et des défis rencontrés.</p>
-                                <div class="flex flex-wrap gap-2 mb-4">
-                                    <span class="bg-blue-900/50 text-blue-300 text-xs font-semibold px-2.5 py-1 rounded-full">Python</span>
-                                    <span class="bg-blue-900/50 text-blue-300 text-xs font-semibold px-2.5 py-1 rounded-full">Django</span>
-                                    <span class="bg-blue-900/50 text-blue-300 text-xs font-semibold px-2.5 py-1 rounded-full">PostgreSQL</span>
-                                </div>
-                                <div class="flex items-center space-x-4">
-                                    <a href="#" target="_blank" class="text-gray-400 hover:text-blue-500 transition-colors">
-                                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.168 6.839 9.492.5.092.682-.217.682-.482 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.031-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.338 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.001 10.001 0 0022 12c0-5.523-4.477-10-10-10z" clip-rule="evenodd"></path></svg>
-                                    </a>
-                                </div>
+
+                        <div class="glass-effect rounded-lg overflow-hidden flex flex-col">
+                            <div class="project-thumbnail">
+                                <span>&#128269;</span>
+                            </div>
+                            <div class="p-6 flex flex-col flex-grow">
+                                <h4 class="text-xl font-bold text-white mb-2">Security Monitoring Setup (PoC)</h4>
+                                <p class="text-gray-400 text-sm mb-4 flex-grow">Proof-of-Concept repository for setting up basic threat detection and alerting rules using Azure Monitor and Log Analytics for a VM environment.</p>
+                                <a href="https://github.com/votre_repo/azure-sec-monitor" target="_blank" class="text-blue-400 hover:text-blue-300 flex items-center space-x-1">
+                                    <span>View on GitHub</span>
+                                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.168 6.839 9.492.5.092.682-.217.682-.482 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.031-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.338 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.001 10.001 0 0022 12c0-5.523-4.477-10-10-10z" clip-rule="evenodd"></path></svg>
+                                </a>
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
             
-            <section id="contact" class="py-20 md:py-32">
+            <section id="contact" class="py-20 md:py-32 bg-gray-900/50">
                  <div class="container mx-auto px-6 text-center">
-                    <h2 class="text-4xl font-bold text-white">Entrons en contact</h2>
+                    <h2 class="text-4xl font-bold text-white">Get In Touch</h2>
                     <div class="w-20 h-1 bg-blue-500 mx-auto mt-4"></div>
                     <p class="mt-6 max-w-2xl mx-auto text-gray-300">
-                        Je suis actuellement à la recherche de nouvelles opportunités. N'hésitez pas à me contacter. Je vous répondrai dans les plus brefs délais.
+                        Do you have a project requiring DevOps, Azure Cloud, or Cyber expertise? Feel free to contact me directly.
                     </p>
-                    <a href="mailto:votre.email@example.com" class="mt-8 inline-block btn-primary bg-blue-600 text-white font-bold py-4 px-8 rounded-lg text-lg">
-                        Dites bonjour !
-                    </a>
+                    <div class="mt-8 flex flex-col sm:flex-row justify-center gap-4">
+                        <a href="mailto:ntahimperafrancis@gmail.com" class="btn-primary bg-blue-600 text-white font-bold py-4 px-8 rounded-lg text-lg flex items-center justify-center space-x-2">
+                           <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M3 5a2 2 0 012-2h14a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V5zm1.5 0v.5L12 12.25 20.5 5.5V5H4.5zM3 7v12a1 1 0 001 1h16a1 1 0 001-1V7l-8.5 6.75L3 7z" /></svg>
+                            <span>ntahimperafrancis@gmail.com</span>
+                        </a>
+                        <a href="tel:+32467679966" class="bg-gray-700 text-white font-bold py-4 px-8 rounded-lg hover:bg-gray-600 transition-colors flex items-center justify-center space-x-2">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm3.84 15.36l-2.73-2.73c-.15-.15-.22-.36-.21-.57V9h1.5v6.06l2.36 2.36c.2.2.2.51 0 .71-.2.2-.51.2-.71 0z" /></svg>
+                            <span>+32 467 67 99 66</span>
+                        </a>
+                    </div>
                  </div>
             </section>
         </main>
 
         <footer class="py-8 border-t border-gray-800">
             <div class="container mx-auto px-6 text-center text-gray-500">
-                <p>&copy; 2025 Jean Dupont. Tous droits réservés.</p>
+                <p>&copy; 2025 Francis Ntahimpera. DevOps Cyber Enthusiast.</p>
             </div>
         </footer>
     </div>
