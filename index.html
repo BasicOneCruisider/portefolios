@@ -6,7 +6,7 @@
     <title>Francis NTAHIMPERA - DevOps Cyber Enthusiast</title>
     <!-- Chosen Palette: Cyber Night (Black, Vibrant Blue, White) -->
     <!-- Application Structure Plan: Designed a single-page application with fixed navigation for ergonomic and easy access to key sections: Home, Profile, Expertise, Projects, and Contact. The Experience section was removed to focus purely on skills, personal projects, and profile summary. This structure ensures a smooth and intuitive user journey, presenting information progressively: a strong visual introduction (Home), personal context (Profile), evidence of capability (Expertise, Projects), leading to a clear call-to-action (Contact). This architecture was chosen for simplicity and effectiveness in telling a coherent professional story. -->
-    <!-- Visualization & Content Choices: The animated background in the Home section (Goal: Engage) uses Canvas for a modern, tech-focused atmosphere. Skills (Goal: Inform) are presented in a clear grid with icons. Projects (Goal: Showcase) are displayed as structured cards, linking each project to code. A dedicated photo frame was added to the profile section. I used inline SVG for social and certification logos for visual impact, adhering to the constraint against complex SVG data visualizations. -->
+    <!-- Visualization & Content Choices: The animated background in the Home section (Goal: Engage) uses Canvas for a modern, tech-focused atmosphere. Skills (Goal: Inform) are presented in a clear grid with icons. Projects (Goal: Showcase) are displayed as structured cards, linking each project to code. A dedicated photo frame was added to the profile section. I used external image URLs for certification badges and inline SVG for social logos for visual impact, adhering to the constraint against complex SVG data visualizations. -->
     <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -82,6 +82,14 @@
             font-size: 4rem;
             object-fit: cover; /* Ensure the image covers the circle */
         }
+        .cert-image {
+            width: 24px;
+            height: 24px;
+            margin-right: 0.75rem;
+            margin-top: 0.25rem;
+            flex-shrink: 0;
+            border-radius: 4px; /* Optional: for a softer look on the badge */
+        }
     </style>
 </head>
 <body class="overflow-x-hidden">
@@ -156,46 +164,43 @@
                                 <h3 class="text-xl font-bold text-blue-400 mb-4">Certifications</h3>
                                 <ul class="list-none text-gray-300 space-y-3">
                                     <li class="flex items-start">
-                                        <!-- AZURE DEVOPS ENGINEER ICON (Grey for In Progress) -->
-                                        <svg class="w-6 h-6 mr-3 mt-1 flex-shrink-0" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M12 2L3 5V11C3 16.55 6.84 21.74 12 23C17.16 21.74 21 16.55 21 11V5L12 2Z" fill="#A0AEC0"/>
-                                            <path d="M12 4.41L19 7.07V11C19 15.61 16.2 19.86 12 21.77C7.8 19.86 5 15.61 5 11V7.07L12 4.41ZM12 7.5L7 9.5V11.5L12 9.5L17 11.5V9.5L12 7.5Z" fill="#FFFFFF"/>
-                                            <path d="M9 13H7V15H9V13ZM11 13H13V15H11V13ZM15 13H17V15H15V13Z" fill="#A0AEC0"/>
-                                        </svg>
+                                        <!-- AZURE DEVOPS ENGINEER ICON (Image) -->
+                                        <img src="https://www.eni-service.fr/wp-content/uploads/2023/07/azure-devops-engineer-expert.png" 
+                                             alt="Azure DevOps Engineer Certification Badge" 
+                                             class="cert-image"
+                                             onerror="this.onerror=null; this.src='https://placehold.co/24x24/A0AEC0/FFFFFF?text=D';"
+                                        >
                                         <div>
                                             <span class="font-semibold">AZURE DEVOPS ENGINEER</span> (In Progress)
                                         </div>
                                     </li>
                                     <li class="flex items-start">
-                                        <!-- AZURE ADMINISTRATOR ICON -->
-                                        <svg class="w-6 h-6 mr-3 mt-1 flex-shrink-0" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M12 2L3 5V11C3 16.55 6.84 21.74 12 23C17.16 21.74 21 16.55 21 11V5L12 2Z" fill="#1E90FF"/>
-                                            <path d="M12 4.41L19 7.07V11C19 15.61 16.2 19.86 12 21.77C7.8 19.86 5 15.61 5 11V7.07L12 4.41Z" fill="#FFFFFF"/>
-                                            <path d="M12 7L7 11H17L12 7ZM12 18L17 14H7L12 18Z" fill="#1E90FF"/>
-                                        </svg>
+                                        <!-- AZURE ADMINISTRATOR ICON (Image) -->
+                                        <img src="https://www.eni-service.fr/wp-content/uploads/2023/07/azure-administrator-associate.png" 
+                                             alt="Azure Administrator Certification Badge" 
+                                             class="cert-image"
+                                             onerror="this.onerror=null; this.src='https://placehold.co/24x24/1E90FF/FFFFFF?text=AZ';"
+                                        >
                                         <div>
                                             <span class="font-semibold">AZURE ADMINISTRATOR</span> (2025)
                                         </div>
                                     </li>
                                     <li class="flex items-start">
-                                        <!-- CompTIA Security+ Icon -->
-                                        <svg class="w-6 h-6 mr-3 mt-1 flex-shrink-0" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <circle cx="12" cy="12" r="10" fill="#3b82f6"/>
-                                            <path d="M9 10C9 8.34315 10.3432 7 12 7C13.6569 7 15 8.34315 15 10C15 11.6569 13.6569 13 12 13C10.3432 13 9 11.6569 9 10Z" fill="#FFFFFF"/>
-                                            <path d="M12 10C12 9.44772 12.4477 9 13 9C13.5523 9 14 9.44772 14 10C14 10.5523 13.5523 11 13 11C12.4477 11 12 10.5523 12 10Z" fill="#3b82f6"/>
-                                            <path d="M10 17H14" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                            <path d="M12 15V17" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                            <path d="M8 12L16 12" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                        </svg>
+                                        <!-- CompTIA Security+ Icon (Image) -->
+                                        <img src="https://cin.comptia.org/media/securityplus-logo-certified-ce-png.8/full" 
+                                             alt="CompTIA Security+ Certification Badge" 
+                                             class="cert-image"
+                                             onerror="this.onerror=null; this.src='https://placehold.co/24x24/3b82f6/FFFFFF?text=S';"
+                                        >
                                         <span class="font-semibold">CompTIA Security+</span> (2024)
                                     </li>
                                     <li class="flex items-start">
-                                        <!-- AZURE FUNDAMENTALS ICON -->
-                                        <svg class="w-6 h-6 mr-3 mt-1 flex-shrink-0" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M12 2L3 5V11C3 16.55 6.84 21.74 12 23C17.16 21.74 21 16.55 21 11V5L12 2Z" fill="#1E90FF"/>
-                                            <path d="M12 4.41L19 7.07V11C19 15.61 16.2 19.86 12 21.77C7.8 19.86 5 15.61 5 11V7.07L12 4.41Z" fill="#FFFFFF"/>
-                                            <path d="M12 8L7 11V15L12 18L17 15V11L12 8Z" fill="#1E90FF"/>
-                                        </svg>
+                                        <!-- AZURE FUNDAMENTALS ICON (Image) -->
+                                        <img src="https://images.credly.com/images/be8fcaeb-c769-4858-b567-ffaaa73ce8cf/image.png" 
+                                             alt="Azure Fundamentals Certification Badge" 
+                                             class="cert-image"
+                                             onerror="this.onerror=null; this.src='https://placehold.co/24x24/1E90FF/FFFFFF?text=F';"
+                                        >
                                         <span class="font-semibold">AZURE FUNDAMENTALS</span> (2023)
                                     </li>
                                 </ul>
