@@ -124,6 +124,20 @@
             flex-direction: column;
             justify-content: flex-start; /* Aligns content to the top */
         }
+        .tool-icon {
+            width: 30px;
+            height: 30px;
+            display: inline-block;
+        }
+        .tool-icon-img {
+            width: 30px;
+            height: 30px;
+            object-fit: contain;
+            /* Added background to ensure SVG/PNG with transparent background looks good */
+            background-color: white; 
+            border-radius: 4px; 
+            padding: 2px;
+        }
     </style>
 </head>
 <body class="overflow-x-hidden">
@@ -181,7 +195,7 @@
                         <div class="w-20 h-1 bg-blue-500 mx-auto mt-4"></div>
                     </div>
                     <div class="grid md:grid-cols-5 gap-10 items-start">
-                        <!-- Left Column (Photo, Skills, Certs) - Adjusted for better height filling -->
+                        <!-- Left Column (Photo, Skills, Certs) -->
                         <div class="md:col-span-2 flex flex-col items-center">
                             <div class="profile-pic-frame">
                                 <img src="https://media.licdn.com/dms/image/v2/D4E03AQHWikrcFxhnnw/profile-displayphoto-crop_800_800/B4EZesD.eiHwAQ-/0/1750938416207?e=1761782400&v=beta&t=Z2RB2sYTdZl1N_sRFCaS0exZ4Pez062_e8NNEkfWrZo" 
@@ -248,19 +262,63 @@
                                 My expertise in **automation** and **Infrastructure as Code (IaC)** is dedicated to system efficiency. I manage CI/CD pipelines and use containerization to build reliable, scalable architectures. My objective is simple: streamline deployments so your teams can focus on innovation.
                             </p>
                             
-                            <!-- Tool Focus Section - Using responsive grid for tool chips -->
+                            <!-- Tool Focus Section - Now with Image Icons -->
                             <div class="glass-effect rounded-lg p-5 border border-gray-700 mb-6">
                                 <h4 class="text-xl font-bold text-white mb-3 flex items-center space-x-2">
                                     <span class="text-blue-500">&#9881;</span>
                                     <span>Primary Tool Focus</span>
                                 </h4>
-                                <!-- Chips use flex-wrap to handle responsiveness -->
-                                <div class="flex flex-wrap gap-3 justify-start"> 
-                                    <span class="tool-chip">Ansible (Configuration)</span>
-                                    <span class="tool-chip">Terraform (IaC)</span>
-                                    <span class="tool-chip">Docker (Containerization)</span>
-                                    <span class="tool-chip">Microsoft (Ecosystem)</span>
-                                    <span class="tool-chip">Azure (Cloud Platform)</span>
+                                <div class="flex flex-wrap gap-4 justify-start"> 
+                                    <!-- Ansible Icon (External Image URL) -->
+                                    <span class="tool-chip flex items-center space-x-2">
+                                        <img 
+                                            src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Ansible_logo.svg/256px-Ansible_logo.svg.png" 
+                                            alt="Ansible Logo" 
+                                            class="tool-icon-img"
+                                            onerror="this.onerror=null; this.src='https://placehold.co/30x30/CC0000/FFFFFF?text=A';"
+                                        >
+                                        <span>Ansible</span>
+                                    </span>
+                                    <!-- Terraform Icon (External Image URL) -->
+                                    <span class="tool-chip flex items-center space-x-2">
+                                        <img 
+                                            src="https://www.svgrepo.com/show/354447/terraform-icon.svg" 
+                                            alt="Terraform Logo" 
+                                            class="tool-icon-img"
+                                            onerror="this.onerror=null; this.src='https://placehold.co/30x30/5C4EE5/FFFFFF?text=T';"
+                                        >
+                                        <span>Terraform</span>
+                                    </span>
+                                    <!-- Docker Icon (External Image URL) -->
+                                    <span class="tool-chip flex items-center space-x-2">
+                                        <img 
+                                            src="https://image.pngaaa.com/963/5050963-middle.png" 
+                                            alt="Docker Logo" 
+                                            class="tool-icon-img"
+                                            onerror="this.onerror=null; this.src='https://placehold.co/30x30/0db7ed/FFFFFF?text=D';"
+                                        >
+                                        <span>Docker</span>
+                                    </span>
+                                    <!-- Microsoft Icon (External Image URL) -->
+                                    <span class="tool-chip flex items-center space-x-2">
+                                        <img 
+                                            src="https://cdn-icons-png.flaticon.com/512/732/732221.png" 
+                                            alt="Microsoft Logo" 
+                                            class="tool-icon-img"
+                                            onerror="this.onerror=null; this.src='https://placehold.co/30x30/00A4EF/FFFFFF?text=M';"
+                                        >
+                                        <span>Microsoft</span>
+                                    </span>
+                                    <!-- Azure Icon (External Image URL) -->
+                                    <span class="tool-chip flex items-center space-x-2">
+                                        <img 
+                                            src="https://upload.wikimedia.org/wikipedia/fr/thumb/b/b6/Microsoft-Azure.png/1200px-Microsoft-Azure.png" 
+                                            alt="Azure Logo" 
+                                            class="tool-icon-img"
+                                            onerror="this.onerror=null; this.src='https://placehold.co/30x30/0072C6/FFFFFF?text=A';"
+                                        >
+                                        <span>Azure</span>
+                                    </span>
                                 </div>
                             </div>
                             <!-- End Tool Focus Section -->
@@ -283,7 +341,6 @@
                         <div class="w-20 h-1 bg-blue-500 mx-auto mt-4"></div>
                     </div>
                     
-                    <h3 class="text-2xl font-bold text-blue-400 mb-6 mt-12 text-center">Core Technologies (Tools)</h3>
                     <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8">
                         
                         <div class="glass-effect rounded-lg p-6 text-center hover:border-blue-500 transition-all transform hover:-translate-y-2">
@@ -304,7 +361,7 @@
                         <div class="glass-effect rounded-lg p-6 text-center hover:border-blue-500 transition-all transform hover:-translate-y-2">
                             <p class="skill-icon">🛡️</p>
                             <h3 class="font-bold text-white text-lg">Security</h3>
-                            <p class="skill-detail">Cloud, Network, Application Security</p>
+                            <p class="skill-detail">Cloud, Application Security</p>
                         </div>
                         <div class="glass-effect rounded-lg p-6 text-center hover:border-blue-500 transition-all transform hover:-translate-y-2">
                             <p class="skill-icon">📊</p>
@@ -313,24 +370,8 @@
                         </div>
                     </div>
 
-                    <h3 class="text-2xl font-bold text-blue-400 mb-6 mt-12 text-center">Methodologies & Concepts</h3>
-                    <div class="grid grid-cols-2 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-                        <div class="glass-effect rounded-lg p-6 text-center hover:border-blue-500 transition-all transform hover:-translate-y-2">
-                            <p class="skill-icon text-2xl mb-2">🔄</p>
-                            <h3 class="font-bold text-white text-lg">Process & Ops</h3>
-                            <p class="skill-detail">CI/CD Concepts, Team Collaboration, ITIL (Incident Management)</p>
-                        </div>
-                        <div class="glass-effect rounded-lg p-6 text-center hover:border-blue-500 transition-all transform hover:-translate-y-2">
-                            <p class="skill-icon text-2xl mb-2">📝</p>
-                            <h3 class="font-bold text-white text-lg">Frameworks</h3>
-                            <p class="skill-detail">Scrum / Agile, SRE Principles</p>
-                        </div>
-                        <div class="glass-effect rounded-lg p-6 text-center hover:border-blue-500 transition-all transform hover:-translate-y-2">
-                            <p class="skill-icon text-2xl mb-2">🔒</p>
-                            <h3 class="font-bold text-white text-lg">Security Integration</h3>
-                            <p class="skill-detail">DevSecOps, Security Best Practices, Runbook Documentation</p>
-                        </div>
-                    </div>
+                    
+                    <!-- Methodologies section was removed -->
                 </div>
             </section>
 
