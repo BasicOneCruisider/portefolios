@@ -1,7 +1,4 @@
-# HTML
-# Archive your static HTML project and save it with the build record.
-# Add steps that build, run tests, deploy, and more:
-# https://aka.ms/yaml
+# HTML Portfolio - Pipeline avec Test
 
 trigger:
 - master
@@ -10,8 +7,32 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
+- task: UseNode@1
+  displayName: 'Install Node.js'
+  inputs:
+    version: '24.8' # Utiliser une version LTS stable
+
+# --- Phase de Test : Linting (Vérification de la validité du code) ---
+- script: |
+    npm install -g htmlhint
+    htmlhint --format compact $(build.sourcesDirectory)/*.html
+  displayName: 'Run HTML Linting (Test Phase)'
+  continueOnError: true # Laissez le pipeline continuer même si des erreurs de linting sont trouvées
+
+# --- Phase de Construction/Archivage (Build Phase) ---
 - task: ArchiveFiles@2
+  displayName: 'Archive Project Files'
   inputs:
     rootFolderOrFile: '$(build.sourcesDirectory)'
     includeRootFolder: false
+    archiveType: 'zip'
+    archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
+    replaceExistingArchive: true
+
+# --- Phase de Publication d'Artefact ---
 - task: PublishBuildArtifacts@1
+  displayName: 'Publish Build Artifacts'
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: 'drop'
+    publishLocation: 'Container'
