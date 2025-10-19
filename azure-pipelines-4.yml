@@ -1,0 +1,21 @@
+trigger:
+- master
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+# --- ÉTAPE 1: TÉLÉCHARGEMENT DE L'ARTEFACT ---
+# Cette tâche doit s'exécuter en premier pour que le package soit disponible.
+- task: DownloadBuildArtifacts@1
+  displayName: 'Download Package from Previous Build'
+  inputs:
+    buildType: 'specific'
+    project: 'f95c694d-f079-4e4b-bb88-89749cc5cffb'
+    pipeline: '8'
+    buildVersionToDownload: 'latest'
+    allowPartiallySucceededBuilds: true
+    downloadType: 'single'
+    # IMPORTANT: Télécharge l'artefact dans le répertoire de l'agent.
+    # L'emplacement par défaut est $(Pipeline.Workspace) ou $(System.ArtifactsDirectory)
+    downloadPath: '$(System.ArtifactsDirectory)'
