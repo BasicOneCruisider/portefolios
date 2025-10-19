@@ -10,14 +10,16 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
-  - checkout: self
-    submodules: true
-  - task: AzureStaticWebApp@0
+  - task: AzureRmWebAppDeployment@5
     inputs:
-      app_location: '/'
-      api_location: 'api'
-      output_location: ''
-    env:
-      azure_static_web_apps_api_token: $(deployment_token)
-
+      ConnectionType: 'AzureRM'
+      azureSubscription: 'Abonnement 2(a56f5503-7af4-45e6-8f96-dd6c75a8883d)'
+      appType: 'webAppLinux'
+      WebAppName: 'az-web-app6557669897'
+      deployToSlotOrASE: true
+      ResourceGroupName: 'Az-Devops-App'
+      SlotName: 'production'
+      packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
+      RuntimeStack: 'PHP|8.3'
+      DeploymentTypeLinux: 'oneDeploy'
 
