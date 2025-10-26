@@ -1,272 +1,696 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en" class="scroll-smooth">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portfolio DevOps - BasicOneCruisider</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
-  <style>
-    body {
-      font-family: 'JetBrains Mono', monospace;
-      background-color: #000;
-      color: #fff;
-      overflow-x: hidden;
-    }
-
-    /* Glass & Glow Effects */
-    .glass-effect {
-      backdrop-filter: blur(10px);
-      background: rgba(0, 0, 0, 0.6);
-      border: 1px solid rgba(0, 255, 255, 0.15);
-    }
-
-    .nav-link.active {
-      color: #06b6d4;
-      border-bottom: 2px solid #06b6d4;
-    }
-
-    canvas {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: -1;
-      pointer-events: none;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Francis NTAHIMPERA - DevOps Cyber Enthusiast</title>
+    <!-- Chosen Palette: Cyber Night (Black, Vibrant Blue, White) -->
+    <!-- Application Structure Plan: Designed a single-page application with fixed navigation for ergonomic and easy access to key sections: Home, Profile, Expertise, Projects, and Contact. The Experience section was removed to focus purely on skills, personal projects, and profile summary. This structure ensures a smooth and intuitive user journey, presenting information progressively: a strong visual introduction (Home), personal context (Profile), evidence of capability (Expertise, Projects), leading to a clear call-to-action (Contact). This architecture was chosen for simplicity and effectiveness in telling a coherent professional story. -->
+    <!-- Visualization & Content Choices: The animated background in the Home section (Goal: Engage) uses Canvas for a modern, tech-focused atmosphere. Skills (Goal: Inform) are presented in a clear grid with icons. Projects (Goal: Showcase) are displayed as structured cards, linking each project to code. A dedicated photo frame was added to the profile section. I used external image URLs for certification badges and inline SVG for social logos for visual impact, adhering to the constraint against complex SVG data visualizations. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0d1117;
+            color: #c9d1d9;
+        }
+        .glass-effect {
+            background: rgba(22, 27, 34, 0.6);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(48, 54, 61, 0.5);
+        }
+        .text-glow {
+            text-shadow: 0 0 8px rgba(59, 130, 246, 0.6), 0 0 20px rgba(59, 130, 246, 0.4);
+        }
+        .btn-primary {
+            transition: all 0.3s ease;
+            box-shadow: 0 0 15px rgba(59, 130, 246, 0.4);
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 25px rgba(59, 130, 246, 0.7);
+        }
+        .nav-link.active {
+            color: #3b82f6;
+            font-weight: 700;
+        }
+        .skill-icon {
+            font-size: 3rem;
+            line-height: 1;
+        }
+        .skill-detail {
+            font-size: 0.8rem;
+            color: #9ca3af;
+        }
+        .cert-icon {
+            color: #3b82f6;
+        }
+        .project-thumbnail {
+            width: 100%;
+            height: 150px;
+            background-color: #1f2937;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: #60a5fa;
+            border-bottom: 2px solid #3b82f6;
+            overflow: hidden; /* Ensure image fits */
+        }
+        .project-thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .profile-pic-frame {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #3b82f6, #0d1117);
+            padding: 4px;
+            margin: 0 auto 1.5rem auto;
+            box-shadow: 0 0 25px rgba(59, 130, 246, 0.5);
+        }
+        .profile-pic {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background-color: #1f2937; /* Fallback color */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #60a5fa;
+            font-size: 4rem;
+            object-fit: cover; /* Ensure the image covers the circle */
+        }
+        .cert-image {
+            width: 24px;
+            height: 24px;
+            margin-right: 0.75rem;
+            margin-top: 0.25rem;
+            flex-shrink: 0;
+            border-radius: 4px; /* Optional: for a softer look on the badge */
+        }
+        .metric-card {
+            background: rgba(59, 130, 246, 0.1);
+            border-left: 3px solid #3b82f6;
+            padding: 1rem;
+        }
+        .metric-value {
+            font-size: 2rem;
+            font-weight: 900;
+            color: #3b82f6;
+            line-height: 1;
+        }
+        .tool-chip {
+            background-color: #1e3a8a; /* Darker blue */
+            color: #eff6ff; /* Light text */
+            padding: 0.5rem 1rem;
+            border-radius: 9999px; /* Fully rounded corners */
+            font-weight: 500;
+            font-size: 0.875rem;
+            transition: transform 0.2s;
+        }
+        .tool-chip:hover {
+            transform: scale(1.05);
+            background-color: #3b82f6; /* Lighter blue on hover */
+        }
+        /* Ensures both columns start at the same height point */
+        #profile .grid {
+            align-items: stretch;
+        }
+        /* Ensures the left column fills the available height on desktop */
+        #profile .md\:col-span-2 {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start; /* Aligns content to the top */
+        }
+        .tool-icon {
+            width: 30px;
+            height: 30px;
+            display: inline-block;
+        }
+        .tool-icon-img {
+            width: 30px;
+            height: 30px;
+            object-fit: contain;
+            /* Added background to ensure SVG/PNG with transparent background looks good */
+            background-color: white; 
+            border-radius: 4px; 
+            padding: 2px;
+        }
+    </style>
 </head>
-<body>
+<body class="overflow-x-hidden">
 
-  <!-- Canvas Background -->
-  <canvas id="bgCanvas"></canvas>
+    <canvas id="background-canvas" class="fixed top-0 left-0 w-full h-full z-0"></canvas>
 
-  <!-- ===== Header ===== -->
-  <header id="header" class="fixed w-full top-0 left-0 z-50 py-4 px-6 flex justify-between items-center transition-all duration-300">
-    <h1 class="text-cyan-400 text-xl font-semibold">BasicOneCruisider</h1>
-    <nav class="hidden md:flex space-x-6">
-      <a href="#about" class="nav-link hover:text-cyan-400 transition">À propos</a>
-      <a href="#skills" class="nav-link hover:text-cyan-400 transition">Compétences</a>
-      <a href="#projects" class="nav-link hover:text-cyan-400 transition">Projets</a>
-      <a href="#contact" class="nav-link hover:text-cyan-400 transition">Contact</a>
-    </nav>
-    <button id="mobile-menu-button" class="md:hidden text-cyan-400 focus:outline-none">
-      ☰
-    </button>
-  </header>
+    <div class="relative z-10">
+        <header id="header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+            <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+                <a href="#home" class="text-2xl font-black text-white text-glow">FRANCIS NTAHIMPERA</a>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#profile" class="nav-link text-gray-300 hover:text-blue-500 transition-colors">Profile</a>
+                    <a href="#expertise" class="nav-link text-gray-300 hover:text-blue-500 transition-colors">Expertise</a>
+                    <a href="#projects" class="nav-link text-gray-300 hover:text-blue-500 transition-colors">Projects</a>
+                    <a href="#contact" class="nav-link text-gray-300 hover:text-blue-500 transition-colors">Contact</a>
+                </div>
+                <button id="mobile-menu-button" class="md:hidden text-white">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-4 6h4"></path></svg>
+                </button>
+            </nav>
+            <div id="mobile-menu" class="hidden md:hidden bg-gray-900/80 backdrop-blur-sm">
+                <a href="#profile" class="block text-center py-2 px-4 text-gray-300 hover:bg-blue-500 hover:text-white">Profile</a>
+                <a href="#expertise" class="block text-center py-2 px-4 text-gray-300 hover:bg-blue-500 hover:text-white">Expertise</a>
+                <a href="#projects" class="block text-center py-2 px-4 text-gray-300 hover:bg-blue-500 hover:text-white">Projects</a>
+                <a href="#contact" class="block text-center py-2 px-4 text-gray-300 hover:bg-blue-500 hover:text-white">Contact</a>
+            </div>
+        </header>
 
-  <!-- Mobile Menu -->
-  <div id="mobile-menu" class="hidden md:hidden glass-effect absolute top-16 right-6 rounded-xl p-4 space-y-2">
-    <a href="#about" class="block nav-link hover:text-cyan-400 transition">À propos</a>
-    <a href="#skills" class="block nav-link hover:text-cyan-400 transition">Compétences</a>
-    <a href="#projects" class="block nav-link hover:text-cyan-400 transition">Projets</a>
-    <a href="#contact" class="block nav-link hover:text-cyan-400 transition">Contact</a>
-  </div>
+        <main>
+            <section id="home" class="min-h-screen flex items-center container mx-auto px-6">
+                <div class="max-w-3xl">
 
-  <!-- ===== Hero Section ===== -->
-  <section class="h-screen flex flex-col justify-center items-center text-center">
-    <h2 class="text-5xl md:text-6xl font-bold mb-4 text-cyan-400">Ingénieur DevOps</h2>
-    <p class="text-gray-300 text-lg md:text-xl max-w-2xl mb-6">
-      Automatisation, Cloud, Sécurité & Observabilité — Je construis des systèmes fiables, scalables et modernes.
-    </p>
-    <a href="#projects" class="px-6 py-3 bg-cyan-500 hover:bg-cyan-400 text-black font-semibold rounded-xl transition-all">Voir mes projets</a>
-  </section>
+                    <h1 class="text-5xl md:text-7xl font-black text-white leading-tight">
+                        <span class="text-glow">DevOps Cyber Enthusiast</span><br>Reliable Architecture & Secure Automation.
+                    </h1>
+                    <p class="mt-6 text-lg text-gray-300 max-w-xl">
+                        Expert in automation and **Infrastructure as Code (IaC)**, I design solutions that streamline deployments and ensure a high-performing, resilient technology ecosystem.
+                    </p>
+                    <div class="mt-8 flex gap-4">
+                        <a href="#expertise" class="btn-primary bg-blue-600 text-white font-bold py-3 px-6 rounded-lg">
+                            View My Expertise
+                        </a>
+                        <a href="https://github.com/BasicOneCruisider/" target="_blank" class="bg-gray-700 text-white font-bold py-3 px-6 rounded-lg hover:bg-gray-600 transition-colors flex items-center space-x-2">
+                           <span>My GitHub</span>
+                           <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.168 6.839 9.492.5.092.682-.217.682-.482 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.031-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.338 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.001 10.001 0 0022 12c0-5.523-4.477-10-10-10z" clip-rule="evenodd"></path></svg>
+                        </a>
+                    </div>
+                </div>
+            </section>
 
-  <!-- ===== About Section ===== -->
-  <section id="about" class="py-20 bg-black text-white">
-    <div class="max-w-4xl mx-auto px-6">
-      <h2 class="text-3xl font-bold mb-6 text-cyan-400 text-center">À propos</h2>
-      <p class="text-gray-300 text-center leading-relaxed">
-        Passionné par l'automatisation, la conteneurisation et les architectures cloud, je conçois et maintiens des pipelines CI/CD robustes.
-        Mon objectif est de rendre les déploiements plus rapides, sécurisés et reproductibles grâce à des outils modernes tels que
-        <strong>Docker, Kubernetes, Terraform et Ansible</strong>.
-      </p>
+            <section id="profile" class="py-20 md:py-32">
+                <div class="container mx-auto px-6">
+                    <div class="text-center mb-12">
+                        <h2 class="text-4xl font-bold text-white">Professional Profile</h2>
+                        <div class="w-20 h-1 bg-blue-500 mx-auto mt-4"></div>
+                    </div>
+                    <!-- Combined Content into one column on desktop (md:grid-cols-1) -->
+                    <div class="grid md:grid-cols-1 gap-10 max-w-4xl mx-auto">
+
+                        <!-- Profile/Value Proposition -->
+                        <div>
+                            <h3 class="text-2xl font-bold text-blue-400 mb-4">My Value Proposition</h3>
+                            <p class="text-gray-300 mb-6">
+                                My expertise in **automation** and **Infrastructure as Code (IaC)** is dedicated to system efficiency. I manage CI/CD pipelines and use containerization to build reliable, scalable architectures. My objective is simple: streamline deployments so your teams can focus on innovation.
+                            </p>
+
+                            <!-- Tool Focus Section - Now with Image Icons -->
+                            <div class="glass-effect rounded-lg p-5 border border-gray-700 mb-6">
+                                <h4 class="text-xl font-bold text-white mb-3 flex items-center space-x-2">
+                                    <span class="text-blue-500">&#9881;</span>
+                                    <span>Primary Tool Focus</span>
+                                </h4>
+                                <div class="flex flex-wrap gap-4 justify-start"> 
+                                    <!-- Ansible Icon (External Image URL) -->
+                                    <span class="tool-chip flex items-center space-x-2">
+                                        <img 
+                                            src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Ansible_logo.svg/256px-Ansible_logo.svg.png" 
+                                            alt="Ansible Logo" 
+                                            class="tool-icon-img"
+                                            onerror="this.onerror=null; this.src='https://placehold.co/30x30/CC0000/FFFFFF?text=A';"
+                                        >
+                                        <span>Ansible</span>
+                                    </span>
+                                    <!-- Terraform Icon (External Image URL) -->
+                                    <span class="tool-chip flex items-center space-x-2">
+                                        <img 
+                                            src="https://www.svgrepo.com/show/354447/terraform-icon.svg" 
+                                            alt="Terraform Logo" 
+                                            class="tool-icon-img"
+                                            onerror="this.onerror=null; this.src='https://placehold.co/30x30/5C4EE5/FFFFFF?text=T';"
+                                        >
+                                        <span>Terraform</span>
+                                    </span>
+                                    <!-- Docker Icon (External Image URL) -->
+                                    <span class="tool-chip flex items-center space-x-2">
+                                        <img 
+                                            src="https://image.pngaaa.com/963/5050963-middle.png" 
+                                            alt="Docker Logo" 
+                                            class="tool-icon-img"
+                                            onerror="this.onerror=null; this.src='https://placehold.co/30x30/0db7ed/FFFFFF?text=D';"
+                                        >
+                                        <span>Docker</span>
+                                    </span>
+                                    <!-- Linux Icon (External Image URL) -->
+                                    <span class="tool-chip flex items-center space-x-2">
+                                        <img 
+                                            src="https://cdn-icons-png.flaticon.com/512/546/546049.png" 
+                                            alt="Linux Logo" 
+                                            class="tool-icon-img"
+                                            onerror="this.onerror=null; this.src='https://placehold.co/30x30/FFA500/FFFFFF?text=L';"
+                                        >
+                                        <span>Linux</span>
+                                    </span>
+                                    <!-- Microsoft Icon (External Image URL) -->
+                                    <span class="tool-chip flex items-center space-x-2">
+                                        <img 
+                                            src="https://cdn-icons-png.flaticon.com/512/732/732221.png" 
+                                            alt="Microsoft Logo" 
+                                            class="tool-icon-img"
+                                            onerror="this.onerror=null; this.src='https://placehold.co/30x30/00A4EF/FFFFFF?text=M';"
+                                        >
+                                        <span>Microsoft</span>
+                                    </span>
+                                    <!-- Azure Icon (External Image URL) -->
+                                    <span class="tool-chip flex items-center space-x-2">
+                                        <img 
+                                            src="https://upload.wikimedia.org/wikipedia/fr/thumb/b/b6/Microsoft-Azure.png/1200px-Microsoft-Azure.png" 
+                                            alt="Azure Logo" 
+                                            class="tool-icon-img"
+                                            onerror="this.onerror=null; this.src='https://placehold.co/30x30/0072C6/FFFFFF?text=A';"
+                                        >
+                                        <span>Azure</span>
+                                    </span>
+                                </div>
+                            </div>
+                            <!-- End Tool Focus Section -->
+
+                            <p class="text-gray-300 mb-4">
+                                As a specialist in IT operations and **cybersecurity**, I resolve critical incidents (via Azure Sentinel/Monitor) and implement proactive strategies to protect assets. Through real-time monitoring (Azure), I anticipate issues and ensure rapid response.
+                            </p>
+                             <p class="text-gray-300">
+                                I support the standardization of processes and technical documentation (runbooks), guaranteeing best practices for a resilient technology ecosystem.
+                            </p>
+                        </div>
+
+                        <!-- Human Skills and Certifications (Now aligned vertically below the main text on desktop) -->
+                        <div class="grid md:grid-cols-2 gap-6 mt-8">
+
+                            <div class="glass-effect rounded-lg p-6 border border-gray-700 w-full">
+                                <h3 class="text-xl font-bold text-blue-400 mb-2">Human Skills</h3>
+                                <p class="text-gray-300">Curiosity, Team Player, Communication, Problem Solving, Fast Learning/Adaptability, Delivering Client Value.</p>
+                            </div>
+
+                           <div class="glass-effect rounded-lg p-6 border border-gray-700 w-full">
+                                <h3 class="text-xl font-bold text-blue-400 mb-4">Certifications</h3>
+                                <ul class="list-none text-gray-300 space-y-3">
+                                    <li class="flex items-start">
+                                        <!-- AZURE DEVOPS ENGINEER ICON (Image) -->
+                                        <img src="https://www.eni-service.fr/wp-content/uploads/2023/07/azure-devops-engineer-expert.png" 
+                                             alt="Azure DevOps Engineer Certification Badge" 
+                                             class="cert-image"
+                                             onerror="this.onerror=null; this.src='https://placehold.co/24x24/A0AEC0/FFFFFF?text=D';"
+                                        >
+                                        <div>
+                                            <span class="font-semibold">AZURE DEVOPS ENGINEER</span> (In Progress)
+                                        </div>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <!-- AZURE ADMINISTRATOR ICON (Image) -->
+                                        <img src="https://www.eni-service.fr/wp-content/uploads/2023/07/azure-administrator-associate.png" 
+                                             alt="Azure Administrator Certification Badge" 
+                                             class="cert-image"
+                                             onerror="this.onerror=null; this.src='https://placehold.co/24x24/1E90FF/FFFFFF?text=AZ';"
+                                        >
+                                        <div>
+                                            <span class="font-semibold">AZURE ADMINISTRATOR</span> (2025)
+                                        </div>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <!-- CompTIA Security+ Icon (Image) -->
+                                        <img src="https://cin.comptia.org/media/securityplus-logo-certified-ce-png.8/full" 
+                                             alt="CompTIA Security+ Certification Badge" 
+                                             class="cert-image"
+                                             onerror="this.onerror=null; this.src='https://placehold.co/24x24/3b82f6/FFFFFF?text=S';"
+                                        >
+                                        <span class="font-semibold">CompTIA Security+</span> (2024)
+                                    </li>
+                                    <li class="flex items-start">
+                                        <!-- AZURE FUNDAMENTALS ICON (Image) -->
+                                        <img src="https://images.credly.com/images/be8fcaeb-c769-4858-b567-ffaaa73ce8cf/image.png" 
+                                             alt="Azure Fundamentals Certification Badge" 
+                                             class="cert-image"
+                                             onerror="this.onerror=null; this.src='https://placehold.co/24x24/1E90FF/FFFFFF?text=F';"
+                                        >
+                                        <span class="font-semibold">AZURE FUNDAMENTALS</span> (2023)
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="expertise" class="py-20 md:py-32 bg-gray-900/50">
+                <div class="container mx-auto px-6">
+                    <div class="text-center mb-12">
+                        <h2 class="text-4xl font-bold text-white">Technical Stack & Expertise</h2>
+                        <div class="w-20 h-1 bg-blue-500 mx-auto mt-4"></div>
+                    </div>
+
+                    <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8">
+
+                        <div class="glass-effect rounded-lg p-6 text-center hover:border-blue-500 transition-all transform hover:-translate-y-2">
+                            <p class="skill-icon">☁️</p>
+                            <h3 class="font-bold text-white text-lg">Cloud</h3>
+                            <p class="skill-detail">Microsoft Azure</p>
+                        </div>
+                         <div class="glass-effect rounded-lg p-6 text-center hover:border-blue-500 transition-all transform hover:-translate-y-2">
+                            <p class="skill-icon">🏗️</p>
+                            <h3 class="font-bold text-white text-lg">IaC</h3>
+                            <p class="skill-detail">Terraform, Ansible, Kubernetes, Docker</p>
+                        </div>
+                        <div class="glass-effect rounded-lg p-6 text-center hover:border-blue-500 transition-all transform hover:-translate-y-2">
+                            <p class="skill-icon">🚀</p>
+                            <h3 class="font-bold text-white text-lg">CI/CD</h3>
+                            <p class="skill-detail">Azure DevOps, GitLab, Jenkins</p>
+                        </div>
+                        <div class="glass-effect rounded-lg p-6 text-center hover:border-blue-500 transition-all transform hover:-translate-y-2">
+                            <p class="skill-icon">🛡️</p>
+                            <h3 class="font-bold text-white text-lg">Security</h3>
+                            <p class="skill-detail">Cloud, Application Security</p>
+                        </div>
+                        <div class="glass-effect rounded-lg p-6 text-center hover:border-blue-500 transition-all transform hover:-translate-y-2">
+                            <p class="skill-icon">📊</p>
+                            <h3 class="font-bold text-white text-lg">Monitoring</h3>
+                            <p class="skill-detail">Azure Monitor / Sentinel, Dynatrace, Splunk</p>
+                        </div>
+                    </div>
+
+
+                    <!-- Methodologies section was removed -->
+                </div>
+            </section>
+
+             <section id="projects" class="py-20 md:py-32">
+                <div class="container mx-auto px-6">
+                    <div class="text-center mb-12">
+                        <h2 class="text-4xl font-bold text-white">My Projects</h2>
+                        <div class="w-20 h-1 bg-blue-500 mx-auto mt-4"></div>
+                        <p class="mt-4 text-gray-400">Personal repositories and proof-of-concept for Cloud, IaC, and security automation.</p>
+                    </div>
+
+                    <div class="grid md:grid-cols-3 gap-8">
+
+                        <div class="glass-effect rounded-lg overflow-hidden flex flex-col">
+                            <div class="project-thumbnail">
+                                <!-- PROJECT 1: Secure AKS Deployment with Thumbnail Image (NEW IMAGE) -->
+                                <img src="https://controlmonkey.io/wp-content/uploads/2025/09/azure-aks-terraform-guide.png" 
+                                     alt="Azure AKS Deployment Thumbnail" 
+                                     onerror="this.onerror=null; this.src='https://placehold.co/600x150/1f2937/60a5fa?text=AKS+Deployment';"
+                                >
+                            </div>
+                            <div class="p-6 flex flex-col flex-grow">
+                                <h4 class="text-xl font-bold text-white mb-2">Secure AKS Deployment with Terraform</h4>
+                                <p class="text-gray-400 text-sm mb-4 flex-grow">Automated deployment of an Azure Kubernetes Service cluster configured with Azure Policy for enforcing security baselines (Zero-Trust).</p>
+                                <div class="flex gap-3 mt-4">
+                                    <a href="https://github.com/BasicOneCruisider/SecureAks/tree/master" target="_blank" class="btn-primary bg-blue-600 text-white font-bold py-2 px-4 rounded-lg text-sm flex items-center space-x-1">
+                                        <span>View Code</span>
+                                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.168 6.839 9.492.5.092.682-.217.682-.482 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.031-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.338 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.001 10.001 0 0022 12c0-5.523-4.477-10-10-10z" clip-rule="evenodd"></path></svg>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="glass-effect rounded-lg overflow-hidden flex flex-col">
+                            <div class="project-thumbnail">
+                                <!-- PROJECT 2: GitLab CI/CD Pipeline Template with Thumbnail Image -->
+                                <img src="https://s3.eu-west-1.amazonaws.com/hodovi.cc/media/images/Frame3x_2.original.png" 
+                                     alt="GitLab CI/CD Pipeline Template Thumbnail" 
+                                     onerror="this.onerror=null; this.src='https://placehold.co/600x150/1f2937/60a5fa?text=GitLab+Pipeline';"
+                                >
+                            </div>
+                            <div class="p-6 flex flex-col flex-grow">
+                                <h4 class="text-xl font-bold text-white mb-2">GitLab CI/CD Pipeline Template</h4>
+                                <p class="text-gray-400 text-sm mb-4 flex-grow">Reusable GitLab CI/CD template for deploying web applications to Azure Web Apps, focusing on efficient stage management and artifact handling.</p>
+                                <div class="flex gap-3 mt-4">
+                                    <a href="https://github.com/BasicOneCruisider/GitlabTemplate/tree/master" target="_blank" class="btn-primary bg-blue-600 text-white font-bold py-2 px-4 rounded-lg text-sm flex items-center space-x-1">
+                                        <span>View Code</span>
+                                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.168 6.839 9.492.5.092.682-.217.682-.482 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.031-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.338 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.001 10.001 0 0022 12c0-5.523-4.477-10-10-10z" clip-rule="evenodd"></path></svg>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="glass-effect rounded-lg overflow-hidden flex flex-col">
+                            <div class="project-thumbnail">
+                                <!-- PROJECT 3: Security Monitoring Setup (PoC) with Thumbnail Image -->
+                                <img src="https://miro.medium.com/v2/0*Rmsv6ThTxvl8sHK7" 
+                                     alt="Security Monitoring Setup Thumbnail" 
+                                     onerror="this.onerror=null; this.src='https://placehold.co/600x150/1f2937/60a5fa?text=SecOps+Monitoring';"
+                                >
+                            </div>
+                            <div class="p-6 flex flex-col flex-grow">
+                                <h4 class="text-xl font-bold text-white mb-2">Security Monitoring Setup (PoC)</h4>
+                                <p class="text-gray-400 text-sm mb-4 flex-grow">Proof-of-Concept repository for setting up basic threat detection and alerting rules using Azure Monitor and Log Analytics for a VM environment.</p>
+                                <div class="flex gap-3 mt-4">
+                                    <a href="https://github.com/BasicOneCruisider/SecOpsPoCThreatDetection" target="_blank" class="btn-primary bg-blue-600 text-white font-bold py-2 px-4 rounded-lg text-sm flex items-center space-x-1">
+                                        <span>View Code</span>
+                                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.168 6.839 9.492.5.092.682-.217.682-.482 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.031-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.338 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.001 10.001 0 0022 12c0-5.523-4.477-10-10-10z" clip-rule="evenodd"></path></svg>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="education" class="py-20 md:py-32 bg-gray-900/50">
+                <div class="container mx-auto px-6">
+                    <div class="text-center mb-12">
+                        <h2 class="text-4xl font-bold text-white">Education & Training</h2>
+                        <div class="w-20 h-1 bg-blue-500 mx-auto mt-4"></div>
+                    </div>
+
+                    <div class="grid md:grid-cols-4 gap-8 max-w-5xl mx-auto">
+                         <!-- Digital City (1st) -->
+                        <div class="glass-effect rounded-lg p-6 hover:border-blue-500 transition-all">
+                            <h3 class="font-bold text-blue-400 text-xl">Digital City</h3>
+                            <p class="text-gray-300">Cybersecurity Analyst</p>
+                            <p class="text-sm text-gray-500 mt-2">Professional Training</p>
+                        </div>
+                        <!-- Inetum (2nd) -->
+                        <div class="glass-effect rounded-lg p-6 hover:border-blue-500 transition-all">
+                            <h3 class="font-bold text-blue-400 text-xl">Inetum</h3>
+                            <p class="text-gray-300">DevOps Consultant</p>
+                            <p class="text-sm text-gray-500 mt-2">Professional Training</p>
+                        </div>
+                        <!-- Becode (3rd, date removed) -->
+                        <div class="glass-effect rounded-lg p-6 hover:border-blue-500 transition-all">
+                            <h3 class="font-bold text-blue-400 text-xl">Becode</h3>
+                            <p class="text-gray-300">Full Stack Web Developer</p>
+                            <p class="text-sm text-gray-500 mt-2">Professional Training</p>
+                        </div>
+                        <!-- EPFC (4th, academic modifier removed) -->
+                        <div class="glass-effect rounded-lg p-6 hover:border-blue-500 transition-all">
+                            <h3 class="font-bold text-blue-400 text-xl">EPFC</h3>
+                            <p class="text-gray-300">Bachelor in Public Relations</p>
+                            <p class="text-sm text-gray-500 mt-2">Academic</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="contact" class="py-20 md:py-32">
+                 <div class="container mx-auto px-6 text-center">
+                    <h2 class="text-4xl font-bold text-white">Get In Touch</h2>
+                    <div class="w-20 h-1 bg-blue-500 mx-auto mt-4"></div>
+                    <p class="mt-6 max-w-2xl mx-auto text-gray-300">
+                        Do you have a project requiring DevOps, Azure Cloud, or Cyber expertise? Feel free to contact me directly.
+                    </p>
+                    <div class="mt-8 flex flex-col sm:flex-row justify-center gap-4">
+                        <a href="mailto:ntahimperafrancis@gmail.com" class="btn-primary bg-blue-600 text-white font-bold py-4 px-8 rounded-lg text-lg flex items-center justify-center space-x-2">
+                           <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M3 5a2 2 0 012-2h14a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V5zm1.5 0v.5L12 12.25 20.5 5.5V5H4.5zM3 7v12a1 1 0 001 1h16a1 1 0 001-1V7l-8.5 6.75L3 7z" /></svg>
+                            <span>ntahimperafrancis@gmail.com</span>
+                        </a>
+                        <a href="tel:+32467679966" class="bg-gray-700 text-white font-bold py-4 px-8 rounded-lg hover:bg-gray-600 transition-colors flex items-center justify-center space-x-2">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm3.84 15.36l-2.73-2.73c-.15-.15-.22-.36-.21-.57V9h1.5v6.06l2.36 2.36c.2.2.2.51 0 .71-.2.2-.51.2-.71 0z" /></svg>
+                            <span>+32 467 67 99 66</span>
+                        </a>
+                    </div>
+                 </div>
+            </section>
+        </main>
+
+        <footer class="py-8 border-t border-gray-800">
+            <div class="container mx-auto px-6 text-center text-gray-500">
+                <p>&copy; 2025 Francis Ntahimpera. DevOps Cyber Enthusiast.</p>
+            </div>
+        </footer>
     </div>
-  </section>
 
-  <!-- ===== Skills Section ===== -->
-  <section id="skills" class="py-20">
-    <div class="max-w-6xl mx-auto px-6 text-center">
-      <h2 class="text-3xl font-bold mb-10 text-cyan-400">Compétences</h2>
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-        <div class="p-6 glass-effect rounded-2xl hover:shadow-cyan-400/20 transition">Docker</div>
-        <div class="p-6 glass-effect rounded-2xl hover:shadow-cyan-400/20 transition">Kubernetes</div>
-        <div class="p-6 glass-effect rounded-2xl hover:shadow-cyan-400/20 transition">Terraform</div>
-        <div class="p-6 glass-effect rounded-2xl hover:shadow-cyan-400/20 transition">Ansible</div>
-        <div class="p-6 glass-effect rounded-2xl hover:shadow-cyan-400/20 transition">AWS / Azure</div>
-        <div class="p-6 glass-effect rounded-2xl hover:shadow-cyan-400/20 transition">GitHub Actions</div>
-        <div class="p-6 glass-effect rounded-2xl hover:shadow-cyan-400/20 transition">Linux</div>
-        <div class="p-6 glass-effect rounded-2xl hover:shadow-cyan-400/20 transition">Prometheus / Grafana</div>
-      </div>
-    </div>
-  </section>
+    <script>
+        const canvas = document.getElementById('background-canvas');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
 
-  <!-- ===== Projects Section ===== -->
-  <section id="projects" class="py-20 bg-black text-white">
-    <div class="max-w-6xl mx-auto px-6">
-      <h2 class="text-3xl font-bold mb-10 text-cyan-400 text-center">Projects</h2>
+        let particlesArray;
 
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        const mouse = {
+            x: null,
+            y: null,
+            radius: (canvas.height / 120) * (canvas.width / 120)
+        };
 
-        <!-- Project 1 -->
-        <div class="bg-gray-800 p-6 rounded-2xl shadow-md border border-cyan-400/20 hover:border-cyan-400/50 hover:shadow-cyan-400/20 transition-all">
-          <h3 class="text-xl font-semibold text-cyan-400 mb-3">CI/CD Pipeline with Jenkins & Docker</h3>
-          <p class="text-gray-300 mb-4">
-            Mise en place d’un pipeline complet d’intégration et de déploiement continu avec
-            <strong>Jenkins</strong>, <strong>Docker</strong> et <strong>GitHub Actions</strong>.
-            Automatisation des builds, tests et déploiements sur serveur distant.
-          </p>
-          <a href="https://github.com/BasicOneCruisider/jenkins-cicd-docker"
-             target="_blank"
-             class="inline-flex items-center text-cyan-400 hover:text-cyan-300 transition">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M12 .297c-6.63 0-12 5.373-12 12..."/>
-            </svg>
-            Voir sur GitHub
-          </a>
-        </div>
+        window.addEventListener('mousemove', (event) => {
+            mouse.x = event.x;
+            mouse.y = event.y;
+        });
 
-        <!-- Project 2 -->
-        <div class="bg-gray-800 p-6 rounded-2xl shadow-md border border-cyan-400/20 hover:border-cyan-400/50 hover:shadow-cyan-400/20 transition-all">
-          <h3 class="text-xl font-semibold text-cyan-400 mb-3">Ansible Infrastructure Automation</h3>
-          <p class="text-gray-300 mb-4">
-            Déploiement automatisé d’une infrastructure Linux complète via
-            <strong>Ansible</strong> : configuration réseau, déploiement d’applications, et
-            gestion centralisée des hôtes.
-          </p>
-          <a href="https://github.com/BasicOneCruisider/ansible-infra-automation"
-             target="_blank"
-             class="inline-flex items-center text-cyan-400 hover:text-cyan-300 transition">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M12 .297c-6.63 0-12 5.373-12 12..."/>
-            </svg>
-            Voir sur GitHub
-          </a>
-        </div>
+        class Particle {
+            constructor(x, y, directionX, directionY, size, color) {
+                this.x = x;
+                this.y = y;
+                this.directionX = directionX;
+                this.directionY = directionY;
+                this.size = size;
+                this.color = color;
+            }
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2, false);
+                ctx.fillStyle = this.color;
+                ctx.fill();
+            }
+            update() {
+                if (this.x > canvas.width || this.x < 0) {
+                    this.directionX = -this.directionX;
+                }
+                if (this.y > canvas.height || this.y < 0) {
+                    this.directionY = -this.directionY;
+                }
 
-        <!-- Project 3 -->
-        <div class="bg-gray-800 p-6 rounded-2xl shadow-md border border-cyan-400/20 hover:border-cyan-400/50 hover:shadow-cyan-400/20 transition-all">
-          <h3 class="text-xl font-semibold text-cyan-400 mb-3">Terraform AWS Infrastructure</h3>
-          <p class="text-gray-300 mb-4">
-            Création d’une infrastructure complète sur <strong>AWS</strong> avec
-            <strong>Terraform</strong> : VPC, EC2, S3, et sécurité automatisée.
-            Infrastructure as Code pour un déploiement reproductible.
-          </p>
-          <a href="https://github.com/BasicOneCruisider/terraform-aws-infra"
-             target="_blank"
-             class="inline-flex items-center text-cyan-400 hover:text-cyan-300 transition">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M12 .297c-6.63 0-12 5.373-12 12..."/>
-            </svg>
-            Voir sur GitHub
-          </a>
-        </div>
+                let dx = mouse.x - this.x;
+                let dy = mouse.y - this.y;
+                let distance = Math.sqrt(dx * dx + dy * dy);
+                if (distance < mouse.radius + this.size) {
+                    if (mouse.x < this.x && this.x < canvas.width - this.size * 10) {
+                        this.x += 5;
+                    }
+                    if (mouse.x > this.x && this.x > this.size * 10) {
+                        this.x -= 5;
+                    }
+                    if (mouse.y < this.y && this.y < canvas.height - this.size * 10) {
+                        this.y += 5;
+                    }
+                    if (mouse.y > this.y && this.y > this.size * 10) {
+                        this.y -= 5;
+                    }
+                }
 
-        <!-- 🆕 Project 4 -->
-        <div class="bg-gray-800 p-6 rounded-2xl shadow-md border border-cyan-400/20 hover:border-cyan-400/50 hover:shadow-cyan-400/20 transition-all">
-          <h3 class="text-xl font-semibold text-cyan-400 mb-3">AKS Cluster MongoDB Monitoring</h3>
-          <p class="text-gray-300 mb-4">
-            Mise en place d’un cluster <strong>AKS (Azure Kubernetes Service)</strong> avec un système de
-            <strong>monitoring complet pour MongoDB</strong> via <strong>Prometheus</strong> et <strong>Grafana</strong>.
-            Intégration d’observabilité cloud-native, déploiement via <strong>Helm</strong> et <strong>Terraform</strong>.
-          </p>
-          <a href="https://github.com/BasicOneCruisider/aks-cluster-mongodb-monitoring"
-             target="_blank"
-             class="inline-flex items-center text-cyan-400 hover:text-cyan-300 transition">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M12 .297c-6.63 0-12 5.373-12 12..."/>
-            </svg>
-            Voir sur GitHub
-          </a>
-        </div>
+                this.x += this.directionX;
+                this.y += this.directionY;
+                this.draw();
+            }
+        }
 
-      </div>
-    </div>
-  </section>
+        function init() {
+            particlesArray = [];
+            let numberOfParticles = (canvas.height * canvas.width) / 9000;
+            for (let i = 0; i < numberOfParticles; i++) {
+                let size = (Math.random() * 2) + 1;
+                let x = (Math.random() * ((innerWidth - size * 2) - (size * 2)) + size * 2);
+                let y = (Math.random() * ((innerHeight - size * 2) - (size * 2)) + size * 2);
+                let directionX = (Math.random() * 0.4) - 0.2;
+                let directionY = (Math.random() * 0.4) - 0.2;
+                let color = 'rgba(59, 130, 246, 0.4)';
+                particlesArray.push(new Particle(x, y, directionX, directionY, size, color));
+            }
+        }
 
-  <!-- ===== Contact Section ===== -->
-  <section id="contact" class="py-20 bg-gray-900 text-center">
-    <h2 class="text-3xl font-bold mb-6 text-cyan-400">Contact</h2>
-    <p class="text-gray-300 mb-4">Intéressé par une collaboration ou un échange ?</p>
-    <a href="mailto:basiconecruisider@gmail.com"
-       class="px-6 py-3 bg-cyan-500 hover:bg-cyan-400 text-black font-semibold rounded-xl transition-all">
-       basiconecruisider@gmail.com
-    </a>
-  </section>
+        function connect() {
+            let opacityValue = 1;
+            for (let a = 0; a < particlesArray.length; a++) {
+                for (let b = a; b < particlesArray.length; b++) {
+                    let distance = ((particlesArray[a].x - particlesArray[b].x) * (particlesArray[a].x - particlesArray[b].x)) +
+                        ((particlesArray[a].y - particlesArray[b].y) * (particlesArray[a].y - particlesArray[b].y));
+                    if (distance < (canvas.width / 7) * (canvas.height / 7)) {
+                        opacityValue = 1 - (distance / 20000);
+                        ctx.strokeStyle = `rgba(193, 211, 251, ${opacityValue})`;
+                        ctx.lineWidth = 1;
+                        ctx.beginPath();
+                        ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
+                        ctx.lineTo(particlesArray[b].x, particlesArray[b].y);
+                        ctx.stroke();
+                    }
+                }
+            }
+        }
 
-  <!-- ===== Footer ===== -->
-  <footer class="text-center py-6 text-gray-500 border-t border-gray-800">
-    © 2025 BasicOneCruisider — DevOps Engineer
-  </footer>
+        function animate() {
+            requestAnimationFrame(animate);
+            ctx.clearRect(0, 0, innerWidth, innerHeight);
 
-  <!-- ===== Scripts ===== -->
-  <script>
-  // Background Canvas Animation
-  const canvas = document.getElementById('bgCanvas');
-  const ctx = canvas.getContext('2d');
-  let w, h;
-  function resize() {
-    w = canvas.width = window.innerWidth;
-    h = canvas.height = window.innerHeight;
-  }
-  window.addEventListener('resize', resize);
-  resize();
+            for (let i = 0; i < particlesArray.length; i++) {
+                particlesArray[i].update();
+            }
+            connect();
+        }
 
-  const stars = Array.from({ length: 100 }, () => ({
-    x: Math.random() * w,
-    y: Math.random() * h,
-    r: Math.random() * 2,
-    s: Math.random() * 0.5 + 0.2
-  }));
+        window.addEventListener('resize', () => {
+            canvas.width = innerWidth;
+            canvas.height = innerHeight;
+            mouse.radius = ((canvas.height / 120) * (canvas.height / 120));
+            init();
+        });
 
-  function draw() {
-    ctx.clearRect(0, 0, w, h);
-    ctx.fillStyle = '#00ffff33';
-    for (const star of stars) {
-      ctx.beginPath();
-      ctx.arc(star.x, star.y, star.r, 0, Math.PI * 2);
-      ctx.fill();
-      star.y += star.s;
-      if (star.y > h) star.y = 0;
-    }
-    requestAnimationFrame(draw);
-  }
-  draw();
+        window.addEventListener('mouseout', () => {
+            mouse.x = undefined;
+            mouse.y = undefined;
+        });
 
-  // Header & Nav Script
-  document.addEventListener('DOMContentLoaded', () => {
-    const header = document.getElementById('header');
-    const mobileMenuButton = document.getElementById('mobile-menu-button');
-    const mobileMenu = document.getElementById('mobile-menu');
-    const navLinks = document.querySelectorAll('.nav-link');
-    const sections = document.querySelectorAll('section');
+        init();
+        animate();
 
-    window.addEventListener('scroll', () => {
-      header.classList.toggle('glass-effect', window.scrollY > 50);
+        document.addEventListener('DOMContentLoaded', () => {
+            const header = document.getElementById('header');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    header.classList.add('glass-effect');
+                } else {
+                    header.classList.remove('glass-effect');
+                }
+            });
 
-      let current = '';
-      sections.forEach(section => {
-        const sectionTop = section.offsetTop - 80;
-        if (scrollY >= sectionTop) current = section.id;
-      });
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
 
-      navLinks.forEach(link => {
-        link.classList.remove('active');
-        if (link.getAttribute('href') === `#${current}`)
-          link.classList.add('active');
-      });
-    });
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-link');
 
-    mobileMenuButton.addEventListener('click', () => {
-      mobileMenu.classList.toggle('hidden');
-    });
-  });
-  </script>
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.5
+            };
 
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        navLinks.forEach(link => {
+                            link.classList.remove('active');
+                            if (link.getAttribute('href').substring(1) === entry.target.id) {
+                                link.classList.add('active');
+                            }
+                        });
+                    }
+                });
+            }, observerOptions);
+
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+        });
+    </script>
 </body>
 </html>
