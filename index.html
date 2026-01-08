@@ -24,6 +24,11 @@
             -webkit-backdrop-filter: blur(10px);
             border: 1px solid rgba(48, 54, 61, 0.5);
         }
+        .header-scrolled {
+            background: #0d1117 !important;
+            border-bottom: 1px solid rgba(48, 54, 61, 0.8);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
         .text-glow {
             text-shadow: 0 0 8px rgba(59, 130, 246, 0.6), 0 0 20px rgba(59, 130, 246, 0.4);
         }
@@ -153,11 +158,12 @@
     <div class="relative z-10">
         <header id="header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
             <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-                <a href="#home" class="text-2xl font-black text-white text-glow">FRANCIS NTAHIMPERA</a>
+                <a href="#home" class="text-2xl font-black text-white text-glow">FRANCIS NTAHIMPERA CloudEngineer </a>
                 <div class="hidden md:flex items-center space-x-8">
                     <a href="#profile" class="nav-link text-gray-300 hover:text-blue-500 transition-colors">Profile</a>
                     <a href="#expertise" class="nav-link text-gray-300 hover:text-blue-500 transition-colors">Expertise</a>
                     <a href="#projects" class="nav-link text-gray-300 hover:text-blue-500 transition-colors">Projects</a>
+                    <a href="#saas-project" class="nav-link text-gray-300 hover:text-blue-500 transition-colors">SaaS Project</a>
                     <a href="#contact" class="nav-link text-gray-300 hover:text-blue-500 transition-colors">Contact</a>
                 </div>
                 <button id="mobile-menu-button" class="md:hidden text-white">
@@ -168,6 +174,7 @@
                 <a href="#profile" class="block text-center py-2 px-4 text-gray-300 hover:bg-blue-500 hover:text-white">Profile</a>
                 <a href="#expertise" class="block text-center py-2 px-4 text-gray-300 hover:bg-blue-500 hover:text-white">Expertise</a>
                 <a href="#projects" class="block text-center py-2 px-4 text-gray-300 hover:bg-blue-500 hover:text-white">Projects</a>
+                <a href="#saas-project" class="block text-center py-2 px-4 text-gray-300 hover:bg-blue-500 hover:text-white">SaaS Project</a>
                 <a href="#contact" class="block text-center py-2 px-4 text-gray-300 hover:bg-blue-500 hover:text-white">Contact</a>
             </div>
         </header>
@@ -177,10 +184,10 @@
                 <div class="max-w-3xl">
 
                     <h1 class="text-5xl md:text-7xl font-black text-white leading-tight">
-                        <span class="text-glow">DevOps Cyber Enthusiast</span><br>Reliable Architecture & Secure Automation.
+                        <span class="text-glow">DevOps & Cyber Enthusiast</span><br>Reliable Architecture & Secure Automation.
                     </h1>
                     <p class="mt-6 text-lg text-gray-300 max-w-xl">
-                        Expert in automation and **Infrastructure as Code (IaC)**, I design solutions that streamline deployments and ensure a high-performing, resilient technology ecosystem.
+                        Expert in automation and Infrastructure as Code (IaC), I design solutions that streamline deployments and ensure a high-performing, resilient technology ecosystem.
                     </p>
                     <div class="mt-8 flex gap-4">
                         <a href="#expertise" class="btn-primary bg-blue-600 text-white font-bold py-3 px-6 rounded-lg">
@@ -207,7 +214,7 @@
                         <div>
                             <h3 class="text-2xl font-bold text-blue-400 mb-4">My Value Proposition</h3>
                             <p class="text-gray-300 mb-6">
-                                My expertise in **automation** and **Infrastructure as Code (IaC)** is dedicated to system efficiency. I manage CI/CD pipelines and use containerization to build reliable, scalable architectures. My objective is simple: streamline deployments so your teams can focus on innovation.
+                                My expertise in automation and Infrastructure as Code (IaC) is dedicated to system efficiency. I manage CI/CD pipelines and use containerization to build reliable, scalable architectures. My objective is simple: streamline deployments so your teams can focus on innovation.
                             </p>
 
                             <!-- Tool Focus Section - Now with Image Icons -->
@@ -282,7 +289,7 @@
                             <!-- End Tool Focus Section -->
 
                             <p class="text-gray-300 mb-4">
-                                As a specialist in IT operations and **cybersecurity**, I resolve critical incidents (via Azure Sentinel/Monitor) and implement proactive strategies to protect assets. Through real-time monitoring (Azure), I anticipate issues and ensure rapid response.
+                                As a specialist in IT operations and cybersecurity, I resolve critical incidents (via Azure Sentinel/Monitor) and implement proactive strategies to protect assets. Through real-time monitoring (Azure), I anticipate issues and ensure rapid response.
                             </p>
                              <p class="text-gray-300">
                                 I support the standardization of processes and technical documentation (runbooks), guaranteeing best practices for a resilient technology ecosystem.
@@ -319,7 +326,7 @@
                                              onerror="this.onerror=null; this.src='https://placehold.co/24x24/1E90FF/FFFFFF?text=AZ';"
                                         >
                                         <div>
-                                            <span class="font-semibold">AZURE ADMINISTRATOR</span> (2025)
+                                            <span class="font-semibold">AZURE ADMINISTRATOR (2025)</span> 
                                         </div>
                                     </li>
                                     <li class="flex items-start">
@@ -329,7 +336,7 @@
                                              class="cert-image"
                                              onerror="this.onerror=null; this.src='https://placehold.co/24x24/3b82f6/FFFFFF?text=S';"
                                         >
-                                        <span class="font-semibold">CompTIA Security+</span> (2024)
+                                        <span class="font-semibold">CompTIA Security+ </span>     (2024)
                                     </li>
                                     <li class="flex items-start">
                                         <!-- AZURE FUNDAMENTALS ICON (Image) -->
@@ -338,7 +345,7 @@
                                              class="cert-image"
                                              onerror="this.onerror=null; this.src='https://placehold.co/24x24/1E90FF/FFFFFF?text=F';"
                                         >
-                                        <span class="font-semibold">AZURE FUNDAMENTALS</span> (2023)
+                                        <span class="font-semibold">AZURE FUNDAMENTALS (2023)</span> 
                                     </li>
                                 </ul>
                             </div>
@@ -454,6 +461,134 @@
                                         <span>View Code</span>
                                         <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.168 6.839 9.492.5.092.682-.217.682-.482 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.031-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.338 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.001 10.001 0 0022 12c0-5.523-4.477-10-10-10z" clip-rule="evenodd"></path></svg>
                                     </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="saas-project" class="py-20 md:py-32">
+                <div class="container mx-auto px-6">
+                    <div class="text-center mb-12">
+                        <h2 class="text-4xl font-bold text-white">SaaS Project</h2>
+                        <div class="w-20 h-1 bg-blue-500 mx-auto mt-4"></div>
+                    </div>
+
+                    <div class="max-w-5xl mx-auto">
+                        <!-- Project Header -->
+                        <div class="glass-effect rounded-lg overflow-hidden border border-gray-700">
+                            <!-- Project Title & Link -->
+                            <div class="p-6 bg-gray-900/70">
+                                <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                                    <h3 class="text-3xl font-bold text-blue-400">AzUsually</h3>
+                                    <a href="https://github.com/basiconecruisider/Azusually" target="_blank" class="btn-primary bg-blue-600 text-white font-bold py-2 px-6 rounded-lg text-sm flex items-center justify-center space-x-2 w-fit">
+                                        <span>View on GitHub</span>
+                                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.168 6.839 9.492.5.092.682-.217.682-.482 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.031-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.338 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.001 10.001 0 0022 12c0-5.523-4.477-10-10-10z" clip-rule="evenodd"></path></svg>
+                                    </a>
+                                </div>
+                                <p class="text-gray-400 mt-3 text-lg">Intelligent Azure Log Analysis Platform with Machine Learning</p>
+                            </div>
+
+                            <!-- Application Screenshot/Visual -->
+                            <div class="bg-gray-950 p-6 flex items-center justify-center border-t border-b border-gray-700">
+                                <img
+                                    src="pic/image.png"
+                                    alt="AzUsually Dashboard Preview"
+                                    class="rounded-lg shadow-2xl max-w-full h-auto"
+                                    onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\'w-full h-64 bg-gradient-to-br from-blue-900 to-gray-900 rounded-lg flex flex-col items-center justify-center text-center p-6\'><svg class=\'w-20 h-20 text-blue-400 mb-4\' fill=\'currentColor\' viewBox=\'0 0 24 24\'><path d=\'M3 13h2v-2H3v2zm0 4h2v-2H3v2zm0-8h2V7H3v2zm4 4h14v-2H7v2zm0 4h14v-2H7v2zM7 7v2h14V7H7z\'/></svg><h4 class=\'text-2xl font-bold text-white\'>AzUsually Dashboard</h4><p class=\'text-gray-400 mt-2\'>Real-time Log Analysis & Prioritization</p></div>';"
+                                >
+                            </div>
+
+                            <!-- Content Grid -->
+                            <div class="grid md:grid-cols-2 gap-8 p-8">
+
+                                <!-- Why Section -->
+                                <div>
+                                    <h4 class="text-2xl font-bold text-white mb-4 flex items-center space-x-2">
+                                        <span class="text-blue-500">💡</span>
+                                        <span>Why</span>
+                                    </h4>
+                                    <div class="space-y-4 text-gray-300">
+                                        <div class="border-l-4 border-red-500 pl-4 py-2 bg-red-900/20 rounded-r">
+                                            <p class="font-semibold text-red-300">The Problem</p>
+                                            <p class="text-sm">Organizations generate thousands of Azure logs daily, making manual analysis impossible. Critical errors get buried in noise.</p>
+                                        </div>
+                                        <div class="border-l-4 border-yellow-500 pl-4 py-2 bg-yellow-900/20 rounded-r">
+                                            <p class="font-semibold text-yellow-300">The Impact</p>
+                                            <p class="text-sm">Teams waste time investigating false positives. Real incidents are delayed. Alert fatigue sets in.</p>
+                                        </div>
+                                        <div class="border-l-4 border-green-500 pl-4 py-2 bg-green-900/20 rounded-r">
+                                            <p class="font-semibold text-green-300">The Solution</p>
+                                            <p class="text-sm">AzUsually uses Machine Learning to automatically triage and prioritize Azure logs, filtering noise and highlighting what matters.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Stack Section -->
+                                <div>
+                                    <h4 class="text-2xl font-bold text-white mb-4 flex items-center space-x-2">
+                                        <span class="text-blue-500">⚙️</span>
+                                        <span>Tech Stack</span>
+                                    </h4>
+                                    <div class="space-y-4">
+                                        <!-- Back/Front End -->
+                                        <div class="glass-effect rounded-lg p-4 border border-gray-700">
+                                            <p class="font-bold text-blue-300 mb-2">Back/Front End</p>
+                                            <div class="flex flex-wrap gap-2">
+                                                <span class="bg-blue-900/50 text-blue-200 px-3 py-1 rounded-full text-xs">FastAPI</span>
+                                                <span class="bg-blue-900/50 text-blue-200 px-3 py-1 rounded-full text-xs">scikit-learn</span>
+                                                <span class="bg-blue-900/50 text-blue-200 px-3 py-1 rounded-full text-xs">DBSCAN Clustering</span>
+                                                <span class="bg-blue-900/50 text-blue-200 px-3 py-1 rounded-full text-xs">Azure SDK</span>
+                                                <span class="bg-blue-900/50 text-blue-200 px-3 py-1 rounded-full text-xs">React</span>
+                                                <span class="bg-blue-900/50 text-blue-200 px-3 py-1 rounded-full text-xs">TypeScript</span>
+                                                <span class="bg-blue-900/50 text-blue-200 px-3 py-1 rounded-full text-xs">Chart.js</span>
+                                            </div>
+                                        </div>
+                                        <!-- Infrastructure -->
+                                        <div class="glass-effect rounded-lg p-4 border border-gray-700">
+                                            <p class="font-bold text-blue-300 mb-2">Infrastructure</p>
+                                            <div class="flex flex-wrap gap-2">
+                                                <span class="bg-purple-900/50 text-purple-200 px-3 py-1 rounded-full text-xs">Azure Container Apps</span>
+                                                <span class="bg-purple-900/50 text-purple-200 px-3 py-1 rounded-full text-xs">Azure App Service</span>
+                                                <span class="bg-purple-900/50 text-purple-200 px-3 py-1 rounded-full text-xs">Azure Container Instances</span>
+                                                <span class="bg-purple-900/50 text-purple-200 px-3 py-1 rounded-full text-xs">Azure Functions</span>
+                                                <span class="bg-purple-900/50 text-purple-200 px-3 py-1 rounded-full text-xs">Container Registry</span>
+                                                <span class="bg-purple-900/50 text-purple-200 px-3 py-1 rounded-full text-xs">Managed Identity</span>
+                                            </div>
+                                        </div>
+                                        <!-- Security & Monitoring -->
+                                        <div class="glass-effect rounded-lg p-4 border border-gray-700">
+                                            <p class="font-bold text-blue-300 mb-2">Security & Monitoring</p>
+                                            <div class="flex flex-wrap gap-2">
+                                                <span class="bg-green-900/50 text-green-200 px-3 py-1 rounded-full text-xs">Azure Key Vault</span>
+                                                <span class="bg-green-900/50 text-green-200 px-3 py-1 rounded-full text-xs">Entra ID</span>
+                                                <span class="bg-green-900/50 text-green-200 px-3 py-1 rounded-full text-xs">Azure Policy</span>
+                                                <span class="bg-green-900/50 text-green-200 px-3 py-1 rounded-full text-xs">Application Insights</span>
+                                                <span class="bg-green-900/50 text-green-200 px-3 py-1 rounded-full text-xs">Azure Log Analytics</span>
+                                            </div>
+                                        </div>
+                                        <!-- CI/CD -->
+                                        <div class="glass-effect rounded-lg p-4 border border-gray-700">
+                                            <p class="font-bold text-blue-300 mb-2">CI/CD</p>
+                                            <div class="flex flex-wrap gap-2">
+                                                <span class="bg-orange-900/50 text-orange-200 px-3 py-1 rounded-full text-xs">GitHub Actions</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Conclusion/Impact -->
+                            <div class="p-6 bg-gradient-to-r from-blue-900/30 to-purple-900/30 border-t border-gray-700">
+                                <div class="flex items-start space-x-4">
+                                    <div class="text-4xl">🎯</div>
+                                    <div>
+                                        <h4 class="text-xl font-bold text-white mb-2">Impact & Results</h4>
+                                        <p class="text-gray-300 leading-relaxed">
+                                            <span class="font-bold text-blue-400">AzUsually transforms 1000+ logs into 3 actionable error groups</span> with clear priorities (HIGH → MEDIUM → LOW), enabling DevOps teams to focus on what truly matters. By automating triage and filtering false positives, it reduces investigation time and accelerates incident response.
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -653,9 +788,9 @@
             const header = document.getElementById('header');
             window.addEventListener('scroll', () => {
                 if (window.scrollY > 50) {
-                    header.classList.add('glass-effect');
+                    header.classList.add('header-scrolled');
                 } else {
-                    header.classList.remove('glass-effect');
+                    header.classList.remove('header-scrolled');
                 }
             });
 
