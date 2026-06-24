@@ -1,0 +1,35 @@
+# .github/workflows/build.yml
+name: Build
+
+on:
+  push:
+    branches: [ "master" ]  # Déclencheur sur master
+  workflow_dispatch:        # Permet un lancement manuel
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24.8'
+
+      - name: Run HTML Linting
+        run: |
+          npm install -g htmlhint
+          htmlhint --format compact *.html
+        continue-on-error: true  # Conserve le comportement
+
+      - name: Archive project files
+        run: zip -r ${{ github.run_id }}.zip .
+
+      - name: Publish build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: drop
+          path: ${{ github.run_id }}.zip
