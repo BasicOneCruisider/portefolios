@@ -1,17 +1,20 @@
-# .github/workflows/build.yml
-name: Build
+name: Build and Deploy to GitHub Pages
 
 on:
   push:
-    branches: [ "master" ]  # Déclencheur sur master
-  workflow_dispatch:        # Permet un lancement manuel
+    branches: [ "master" ] # ou "main" selon votre branche par défaut
+  workflow_dispatch: # Pour lancer manuellement
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
 
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout code
+      - name: Checkout
         uses: actions/checkout@v4
 
       - name: Install Node.js
@@ -22,14 +25,25 @@ jobs:
       - name: Run HTML Linting
         run: |
           npm install -g htmlhint
-          htmlhint --format compact *.html
-        continue-on-error: true  # Conserve le comportement
+          htmlhint --format compact ./*.html
+        continue-on-error: true
 
-      - name: Archive project files
+      - name: Archive project files (optionnel)
         run: zip -r ${{ github.run_id }}.zip .
+        # On garde l'archive mais on ne la publie pas forcément, ou on la publie en artifact.
 
-      - name: Publish build artifact
-        uses: actions/upload-artifact@v4
+      - name: Upload artifact for Pages
+        uses: actions/upload-pages-artifact@v3
         with:
-          name: drop
-          path: ${{ github.run_id }}.zip
+          path: '.' # Déploie tout le contenu du dépôt
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
